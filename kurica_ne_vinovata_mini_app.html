@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Курица не виновата</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    :root{--orange:#ff4b16;--cream:#fff8ed;--ink:#111;--muted:#716b63;--card:#fff}
+    *{box-sizing:border-box} body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+    button{font:inherit;border:0;cursor:pointer}
+    .app{max-width:560px;margin:auto;padding:18px 16px 100px}
+    .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+    .brand{font-weight:900;font-size:19px;letter-spacing:-.7px}
+    .brand span{color:var(--orange)}
+    .profile{width:42px;height:42px;border-radius:50%;background:var(--orange);display:grid;place-items:center;color:#fff;font-weight:900}
+    .hero{background:#111;color:#fff;border-radius:28px;padding:25px 22px;position:relative;overflow:hidden}
+    .hero:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:var(--orange);right:-70px;top:-65px}
+    .eyebrow{font-weight:800;color:#ff8a63;text-transform:uppercase;font-size:12px}
+    h1{font-size:42px;line-height:.94;margin:9px 0 12px;letter-spacing:-2px;max-width:360px}
+    .hero p{color:#ddd;margin:0 0 18px}
+    .cta{background:var(--orange);color:#fff;padding:14px 20px;border-radius:16px;font-weight:900;width:100%}
+    .mascot{font-size:80px;position:absolute;right:10px;bottom:-10px;z-index:2;filter:drop-shadow(0 6px 0 #111)}
+    .section{margin-top:26px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:12px}
+    .section h2{margin:0;font-size:27px;letter-spacing:-1px}
+    .small{color:var(--muted);font-size:13px}
+    .chips{display:flex;gap:8px;overflow:auto;padding-bottom:4px}
+    .chip{background:#fff;border:1px solid #eee2d4;padding:10px 14px;border-radius:999px;white-space:nowrap;font-weight:800}
+    .chip.active{background:var(--orange);color:#fff;border-color:var(--orange)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .card{background:var(--card);border-radius:20px;overflow:hidden;border:1px solid #eee2d4}
+    .food{height:125px;background:linear-gradient(135deg,#ffb45c,#ff4b16);display:grid;place-items:center;font-size:64px}
+    .card-body{padding:12px}
+    .card h3{font-size:16px;margin:0 0 5px}
+    .desc{font-size:12px;color:var(--muted);min-height:30px}
+    .row{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+    .price{font-weight:950}
+    .add{width:36px;height:36px;border-radius:12px;background:var(--orange);color:#fff;font-size:22px;font-weight:900}
+    .case{background:#111;color:#fff;border-radius:24px;padding:20px;margin-top:12px}
+    .case .label{color:#ff8a63;font-size:11px;font-weight:900;letter-spacing:1px}
+    .case h3{font-size:24px;margin:7px 0 4px}
+    .stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+    .stat{background:#242424;border-radius:14px;padding:12px}.stat b{display:block;font-size:20px}.stat span{font-size:11px;color:#aaa}
+    .nav{position:fixed;left:50%;transform:translateX(-50%);bottom:12px;width:min(528px,calc(100% - 24px));background:#111;color:#fff;border-radius:20px;padding:10px;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;box-shadow:0 10px 30px #0002}
+    .nav button{background:transparent;color:#aaa;padding:8px 2px;font-size:11px;font-weight:800}.nav button.active{color:#fff}
+    .nav .ico{display:block;font-size:19px;margin-bottom:3px}
+    .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:86px;background:#111;color:#fff;padding:12px 18px;border-radius:14px;opacity:0;pointer-events:none;transition:.2s;font-weight:800}
+    .toast.show{opacity:1}
+  </style>
+</head>
+<body>
+<div class="app">
+  <div class="top"><div class="brand">КУРИЦА <span>НЕ</span> ВИНОВАТА</div><div class="profile" id="profile">🐔</div></div>
+
+  <section class="hero">
+    <div class="eyebrow">Добро пожаловать в дело</div>
+    <h1>КРЫЛЬЯ,<br>ЗА КОТОРЫЕ<br>НЕ СТЫДНО.</h1>
+    <p>Хрустящие снаружи. Сочные внутри.<br><b>Виноват её вкус.</b></p>
+    <button class="cta" onclick="order()">Совершить преступление →</button>
+    <div class="mascot">🐔</div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2>Наше меню</h2><span class="small">Павлодар</span></div>
+    <div class="chips">
+      <button class="chip active">Крылья</button><button class="chip">Комбо</button><button class="chip">Соусы</button><button class="chip">Напитки</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="grid">
+      <article class="card"><div class="food">🍗</div><div class="card-body"><h3>Классические</h3><div class="desc">Тот самый хруст.</div><div class="row"><span class="price">2 990 ₸</span><button class="add" onclick="add('Классические')">+</button></div></div></article>
+      <article class="card"><div class="food">🌶️🍗</div><div class="card-body"><h3>Острые</h3><div class="desc">Когда хочется погорячее.</div><div class="row"><span class="price">2 990 ₸</span><button class="add" onclick="add('Острые')">+</button></div></div></article>
+      <article class="card"><div class="food">🍗🔥</div><div class="card-body"><h3>BBQ</h3><div class="desc">Дымный характер.</div><div class="row"><span class="price">2 990 ₸</span><button class="add" onclick="add('BBQ')">+</button></div></div></article>
+      <article class="card"><div class="food">🧄🍗</div><div class="card-body"><h3>Чесночные</h3><div class="desc">Аромат, который объединяет.</div><div class="row"><span class="price">2 990 ₸</span><button class="add" onclick="add('Чесночные')">+</button></div></div></article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="case">
+      <div class="label">МОЁ ДЕЛО</div>
+      <h3 id="caseTitle">Дело ещё не заведено</h3>
+      <div class="small" style="color:#aaa">Совершите первое преступление — начнём историю.</div>
+      <div class="stats">
+        <div class="stat"><b id="orders">0</b><span>заказов</span></div>
+        <div class="stat"><b id="wings">0</b><span>крыльев съедено</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="nav">
+  <button class="active"><span class="ico">🍗</span>Меню</button>
+  <button onclick="toast('Раздел «Заказы» подключим следующим этапом')"><span class="ico">🧾</span>Заказы</button>
+  <button onclick="toast('Личный кабинет подключим следующим этапом')"><span class="ico">👤</span>Моё дело</button>
+  <button onclick="toast('Корзина пока тестовая')"><span class="ico">🛒</span>Корзина</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const tg = window.Telegram?.WebApp;
+if(tg){tg.ready();tg.expand();document.body.style.background=tg.themeParams?.bg_color||'#fff8ed';}
+let cart=[];
+function add(name){cart.push(name);toast(name+' добавлены в дело 🍗');}
+function order(){toast('Заказ пока тестовый — следующим этапом подключим корзину и оплату');}
+function toast(t){const x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2200);}
+if(tg?.initDataUnsafe?.user){const u=tg.initDataUnsafe.user;document.getElementById('profile').textContent=(u.first_name||'К').slice(0,1);}
+</script>
+</body>
+</html>
