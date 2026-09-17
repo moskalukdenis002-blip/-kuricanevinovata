@@ -2,11 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>Курица не виновата</title>
 
@@ -14,533 +10,652 @@
 
 <style>
 
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
+:root{
+    --bg:#080808;
+    --card:#111111;
+    --card2:#171717;
+    --orange:#ff4b35;
+    --orange2:#ff6b3d;
+    --white:#ffffff;
+    --gray:#9b9b9b;
+    --line:#292929;
 }
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-    background: #050505;
-    color: #ffffff;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
-body {
-    min-height: 100vh;
+html{
+    scroll-behavior:smooth;
 }
 
-button {
-    font-family: inherit;
-    border: none;
-    cursor: pointer;
+body{
+    margin:0;
+    background:var(--bg);
+    color:white;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 }
 
-.app {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    min-height: 100vh;
-    padding-bottom: 110px;
+button{
+    font-family:inherit;
+    border:0;
 }
 
-/* =========================
-   HEADER
-========================= */
-
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 20px 8px;
+.app{
+    max-width:600px;
+    margin:auto;
+    padding-bottom:110px;
 }
 
-.icon-btn {
-    width: 48px;
-    height: 48px;
+/* ================= HEADER ================= */
 
-    border-radius: 16px;
-
-    background: #171717;
-    border: 1px solid #303030;
-
-    color: #ffffff;
-
-    font-size: 25px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.header{
+    padding:18px 18px 8px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.header-center {
-    text-align: center;
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
-.header-title {
-    font-size: 18px;
-    font-weight: 900;
+.header-logo{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    object-fit:cover;
+    background:white;
 }
 
-.header-subtitle {
-    margin-top: 2px;
-    color: #8c8c8c;
-    font-size: 12px;
+.brand-name{
+    font-size:18px;
+    font-weight:800;
+    line-height:1.05;
 }
 
-/* =========================
-   LOGO
-========================= */
-
-.logo-wrap {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 12px 20px 2px;
+.brand-sub{
+    color:#888;
+    font-size:12px;
+    margin-top:4px;
 }
 
-.logo {
-    width: 120px;
-    height: 120px;
-
-    object-fit: contain;
-
-    display: block;
-
-    border-radius: 20px;
+.icon-btn{
+    width:48px;
+    height:48px;
+    border-radius:16px;
+    background:#151515;
+    border:1px solid #2c2c2c;
+    color:white;
+    font-size:23px;
 }
 
-/* =========================
-   CITY
-========================= */
+/* ================= CITY ================= */
 
-.city {
-    margin: 8px 20px 20px;
-
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-
-    padding: 12px 18px;
-
-    border-radius: 30px;
-
-    background: #121212;
-    border: 1px solid #3b3b3b;
-
-    color: #ffffff;
-
-    font-size: 17px;
-    font-weight: 900;
+.city-row{
+    padding:8px 18px 16px;
 }
 
-.city-name {
-    color: #ff654f;
+.city-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:#141414;
+    border:1px solid #3a3a3a;
+    border-radius:30px;
+    color:white;
+    padding:11px 17px;
+    font-size:15px;
+    font-weight:700;
 }
 
-/* =========================
-   HERO
-========================= */
+.city-btn span{
+    color:var(--orange);
+}
 
-.hero {
-    margin: 0 20px;
+/* ================= HERO ================= */
 
-    padding: 28px 22px 24px;
-
-    border-radius: 28px;
-
+.hero{
+    margin:0 14px 22px;
+    min-height:430px;
+    border-radius:30px;
+    overflow:hidden;
+    position:relative;
     background:
-        radial-gradient(
-            circle at 85% 10%,
-            rgba(255,48,39,.13),
-            transparent 35%
-        ),
-        #111111;
-
-    border: 1px solid #222222;
+        radial-gradient(circle at 80% 20%,rgba(255,74,45,.4),transparent 30%),
+        linear-gradient(145deg,#171717,#080808 70%);
 }
 
-.hero-small {
-    color: #ff654f;
-
-    font-size: 15px;
-    font-weight: 950;
-
-    letter-spacing: 2px;
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.95) 0%,
+        rgba(0,0,0,.25) 65%,
+        transparent 100%
+    );
 }
 
-.hero h1 {
-    margin: 17px 0;
-
-    font-size: 45px;
-    line-height: .93;
-
-    font-weight: 950;
-
-    letter-spacing: -2px;
+.hero-image{
+    position:absolute;
+    right:-30px;
+    top:5px;
+    width:80%;
+    height:280px;
+    object-fit:cover;
+    opacity:.95;
+    border-radius:25px;
+    mask-image:linear-gradient(to bottom,black 55%,transparent 100%);
+    -webkit-mask-image:linear-gradient(to bottom,black 55%,transparent 100%);
 }
 
-.hero h1 span {
-    color: #ff3027;
+.hero-content{
+    position:absolute;
+    z-index:2;
+    bottom:28px;
+    left:24px;
+    right:24px;
 }
 
-.hero-text {
-    color: #d6d6d6;
-
-    font-size: 17px;
-    line-height: 1.4;
-
-    margin: 0 0 23px;
+.hero-small{
+    color:var(--orange);
+    font-size:14px;
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
-.hero-text strong {
-    color: #ffffff;
+.hero-title{
+    margin:8px 0;
+    font-size:46px;
+    line-height:.92;
+    font-weight:950;
+    letter-spacing:-2px;
 }
 
-.hero-btn {
-    width: 100%;
-
-    padding: 17px 18px;
-
-    border-radius: 18px;
-
-    background: #ff3027;
-
-    color: #ffffff;
-
-    font-size: 20px;
-    font-weight: 950;
-
-    box-shadow:
-        0 8px 25px rgba(255,48,39,.18);
+.hero-title span{
+    color:var(--orange);
 }
 
-.hero-btn:active {
-    transform: scale(.98);
+.hero-text{
+    color:#d0d0d0;
+    font-size:15px;
+    line-height:1.4;
+    margin:12px 0 20px;
 }
 
-/* =========================
-   SECTION
-========================= */
-
-.section {
-    padding: 28px 20px 0;
+.hero-btn{
+    width:100%;
+    padding:17px;
+    background:var(--orange);
+    color:white;
+    border-radius:17px;
+    font-size:17px;
+    font-weight:900;
+    box-shadow:0 10px 35px rgba(255,75,53,.25);
 }
 
-.section-title {
-    margin-bottom: 14px;
+/* ================= SECTION ================= */
 
-    font-size: 25px;
-    font-weight: 950;
+.section{
+    padding:0 18px;
 }
 
-/* =========================
-   CATEGORIES
-========================= */
-
-.categories {
-    display: flex;
-
-    gap: 9px;
-
-    overflow-x: auto;
-
-    padding-bottom: 4px;
-
-    scrollbar-width: none;
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:14px;
 }
 
-.categories::-webkit-scrollbar {
-    display: none;
+.section-title{
+    font-size:26px;
+    font-weight:950;
 }
 
-.category {
-    flex: 0 0 auto;
-
-    padding: 12px 17px;
-
-    border-radius: 20px;
-
-    background: #171717;
-    border: 1px solid #303030;
-
-    color: #dddddd;
-
-    font-size: 14px;
-    font-weight: 850;
+.section-link{
+    color:var(--orange);
+    font-size:13px;
+    font-weight:700;
 }
 
-.category.active {
-    background: #ff3027;
-    border-color: #ff3027;
+/* ================= CATEGORIES ================= */
 
-    color: #ffffff;
+.categories{
+    display:flex;
+    gap:9px;
+    overflow-x:auto;
+    padding-bottom:7px;
+    margin-bottom:24px;
+    scrollbar-width:none;
 }
 
-/* =========================
-   PRODUCTS
-========================= */
-
-.products {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 12px;
+.categories::-webkit-scrollbar{
+    display:none;
 }
 
-.product {
-    overflow: hidden;
-
-    background: #151515;
-
-    border: 1px solid #292929;
-
-    border-radius: 22px;
+.category{
+    flex-shrink:0;
+    background:#151515;
+    color:#aaa;
+    border:1px solid #292929;
+    border-radius:14px;
+    padding:11px 15px;
+    font-size:14px;
+    font-weight:800;
 }
 
-.product-img {
-    width: 100%;
-    height: 145px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: #202020;
-
-    font-size: 62px;
+.category.active{
+    background:var(--orange);
+    border-color:var(--orange);
+    color:white;
 }
 
-.product-info {
-    padding: 13px;
+/* ================= PRODUCTS ================= */
+
+.products{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:13px;
 }
 
-.product-name {
-    font-size: 17px;
-    font-weight: 950;
+.product{
+    background:var(--card);
+    border:1px solid #222;
+    border-radius:21px;
+    overflow:hidden;
+    position:relative;
 }
 
-.product-desc {
-    min-height: 32px;
-
-    margin-top: 5px;
-
-    color: #999999;
-
-    font-size: 12px;
-    line-height: 1.3;
+.product-img-wrap{
+    height:165px;
+    background:#191919;
+    position:relative;
+    overflow:hidden;
 }
 
-.product-bottom {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    margin-top: 12px;
+.product-img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.25s;
 }
 
-.price {
-    font-size: 17px;
-    font-weight: 950;
+.product:active .product-img{
+    transform:scale(1.04);
 }
 
-.add {
-    width: 38px;
-    height: 38px;
-
-    border-radius: 13px;
-
-    background: #ff3027;
-
-    color: #ffffff;
-
-    font-size: 25px;
-    font-weight: 900;
+.product-badge{
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:var(--orange);
+    padding:6px 9px;
+    border-radius:9px;
+    font-size:10px;
+    font-weight:900;
 }
 
-.add:active {
-    transform: scale(.92);
+.product-info{
+    padding:13px;
 }
 
-/* =========================
-   INFO
-========================= */
-
-.info {
-    margin: 25px 20px;
-
-    padding: 20px;
-
-    border-radius: 22px;
-
-    background: #151515;
-    border: 1px solid #292929;
+.product-name{
+    font-size:17px;
+    font-weight:900;
+    margin-bottom:5px;
 }
 
-.info-title {
-    font-size: 18px;
-    font-weight: 950;
+.product-desc{
+    color:#888;
+    font-size:12px;
+    line-height:1.35;
+    min-height:32px;
 }
 
-.info-text {
-    margin-top: 12px;
-
-    color: #aaaaaa;
-
-    line-height: 1.6;
+.product-bottom{
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-/* =========================
-   BOTTOM NAV
-========================= */
-
-.bottom-nav {
-    position: fixed;
-
-    left: 50%;
-    bottom: 12px;
-
-    transform: translateX(-50%);
-
-    width: calc(100% - 28px);
-
-    max-width: 570px;
-
-    padding: 8px;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    background: rgba(20,20,20,.96);
-
-    border: 1px solid #333333;
-
-    border-radius: 25px;
-
-    backdrop-filter: blur(15px);
-
-    z-index: 100;
+.price{
+    font-size:17px;
+    font-weight:950;
 }
 
-.nav-item {
-    padding: 9px 3px;
-
-    border-radius: 18px;
-
-    background: transparent;
-
-    color: #777777;
-
-    font-size: 12px;
-    font-weight: 850;
+.add-btn{
+    width:38px;
+    height:38px;
+    border-radius:13px;
+    background:var(--orange);
+    color:white;
+    font-size:24px;
+    font-weight:500;
 }
 
-.nav-icon {
-    display: block;
+/* ================= PROMO ================= */
 
-    margin-bottom: 4px;
-
-    font-size: 22px;
+.promo{
+    margin:30px 18px;
+    background:
+        radial-gradient(circle at 90% 0%,rgba(255,75,53,.3),transparent 35%),
+        #151515;
+    border:1px solid #292929;
+    border-radius:23px;
+    padding:21px;
 }
 
-.nav-item.active {
-    background: #252525;
-
-    color: #ffffff;
+.promo-label{
+    color:var(--orange);
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:1px;
 }
 
-/* =========================
-   MODAL
-========================= */
-
-.modal {
-    position: fixed;
-
-    inset: 0;
-
-    display: none;
-    align-items: flex-end;
-
-    background: rgba(0,0,0,.72);
-
-    z-index: 200;
+.promo-title{
+    font-size:24px;
+    font-weight:950;
+    margin:7px 0;
 }
 
-.modal.show {
-    display: flex;
+.promo-text{
+    color:#999;
+    font-size:13px;
+    line-height:1.4;
 }
 
-.modal-content {
-    width: 100%;
-    max-width: 600px;
+/* ================= MENU PAGE ================= */
 
-    margin: 0 auto;
-
-    padding: 24px 20px 35px;
-
-    border-radius: 28px 28px 0 0;
-
-    background: #151515;
-
-    border-top: 1px solid #333333;
+.page{
+    display:none;
 }
 
-.modal-title {
-    margin-bottom: 18px;
-
-    font-size: 25px;
-    font-weight: 950;
+.page.active{
+    display:block;
 }
 
-.modal-text {
-    color: #cccccc;
-
-    font-size: 16px;
-    line-height: 1.5;
+.menu-header{
+    padding:12px 18px 18px;
 }
 
-.modal-button {
-    width: 100%;
-
-    margin-top: 12px;
-
-    padding: 15px;
-
-    border-radius: 16px;
-
-    background: #292929;
-
-    color: #ffffff;
-
-    font-size: 16px;
-    font-weight: 850;
+.menu-header h1{
+    font-size:36px;
+    line-height:1;
+    margin:0 0 8px;
+    font-weight:950;
 }
 
-.modal-button.red {
-    background: #ff3027;
+.menu-header p{
+    color:#888;
+    margin:0;
 }
 
-/* =========================
-   MOBILE
-========================= */
+.menu-category-title{
+    font-size:24px;
+    font-weight:950;
+    margin:25px 0 14px;
+}
 
-@media (max-width: 380px) {
+/* ================= CART ================= */
 
-    .hero h1 {
-        font-size: 39px;
+.cart-empty{
+    margin:60px 20px;
+    text-align:center;
+}
+
+.cart-empty-icon{
+    font-size:65px;
+    margin-bottom:15px;
+}
+
+.cart-empty h2{
+    font-size:25px;
+    margin:0 0 8px;
+}
+
+.cart-empty p{
+    color:#777;
+}
+
+.cart-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:#151515;
+    border:1px solid #242424;
+    padding:10px;
+    border-radius:17px;
+    margin-bottom:10px;
+}
+
+.cart-item img{
+    width:65px;
+    height:65px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.cart-item-info{
+    flex:1;
+}
+
+.cart-item-name{
+    font-weight:800;
+    font-size:14px;
+}
+
+.cart-item-price{
+    color:#aaa;
+    margin-top:4px;
+    font-size:13px;
+}
+
+.qty{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.qty button{
+    width:30px;
+    height:30px;
+    border-radius:9px;
+    background:#292929;
+    color:white;
+    font-size:18px;
+}
+
+.qty span{
+    min-width:15px;
+    text-align:center;
+}
+
+.cart-footer{
+    position:fixed;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:74px;
+    width:min(570px,calc(100% - 28px));
+    background:rgba(18,18,18,.96);
+    backdrop-filter:blur(18px);
+    border:1px solid #333;
+    border-radius:20px;
+    padding:12px;
+    z-index:50;
+}
+
+.cart-total-row{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+    font-weight:900;
+}
+
+.checkout{
+    width:100%;
+    background:var(--orange);
+    color:white;
+    border-radius:14px;
+    padding:15px;
+    font-size:16px;
+    font-weight:900;
+}
+
+/* ================= PROFILE ================= */
+
+.profile-card{
+    margin:20px 18px;
+    padding:25px;
+    border-radius:25px;
+    background:#151515;
+    border:1px solid #292929;
+    text-align:center;
+}
+
+.profile-icon{
+    font-size:60px;
+}
+
+.profile-card h2{
+    margin:10px 0 5px;
+}
+
+.profile-card p{
+    color:#888;
+}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav{
+    position:fixed;
+    z-index:100;
+    bottom:10px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(570px,calc(100% - 20px));
+    height:72px;
+    border-radius:24px;
+    background:rgba(20,20,20,.94);
+    backdrop-filter:blur(18px);
+    border:1px solid #303030;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+}
+
+.nav-item{
+    width:25%;
+    text-align:center;
+    color:#777;
+    font-size:11px;
+    font-weight:700;
+}
+
+.nav-icon{
+    font-size:23px;
+    display:block;
+    margin-bottom:3px;
+}
+
+.nav-item.active{
+    color:white;
+}
+
+.nav-item.active .nav-icon{
+    color:var(--orange);
+}
+
+/* ================= CITY MODAL ================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    backdrop-filter:blur(7px);
+    display:none;
+    align-items:flex-end;
+    z-index:200;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    background:#151515;
+    border-radius:28px 28px 0 0;
+    padding:24px 20px 35px;
+}
+
+.modal-title{
+    font-size:23px;
+    font-weight:950;
+    margin-bottom:18px;
+}
+
+.city-option{
+    width:100%;
+    background:#202020;
+    color:white;
+    padding:17px;
+    border-radius:15px;
+    margin-bottom:9px;
+    text-align:left;
+    font-size:16px;
+    font-weight:800;
+}
+
+/* ================= TOAST ================= */
+
+.toast{
+    position:fixed;
+    z-index:300;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%) translateY(-20px);
+    background:#222;
+    border:1px solid #444;
+    padding:12px 18px;
+    border-radius:14px;
+    opacity:0;
+    pointer-events:none;
+    transition:.25s;
+    font-size:14px;
+    font-weight:700;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}
+
+/* ================= DESKTOP ================= */
+
+@media(min-width:700px){
+
+    body{
+        background:#050505;
     }
 
-    .product-img {
-        height: 125px;
+    .app{
+        background:#080808;
+        min-height:100vh;
+    }
+
+    .hero{
+        min-height:470px;
+    }
+
+    .hero-title{
+        font-size:55px;
     }
 
 }
@@ -548,359 +663,220 @@ button {
 </style>
 </head>
 
-
 <body>
 
 <div class="app">
 
-    <!-- HEADER -->
+<!-- ================= HOME ================= -->
 
-    <header class="header">
+<div id="homePage" class="page active">
 
-        <button
-            class="icon-btn"
-            onclick="openMenu()"
-        >
-            ☰
-        </button>
+<header class="header">
 
-        <div class="header-center">
-
-            <div class="header-title">
-                Курица не виновата
-            </div>
-
-            <div class="header-subtitle">
-                мини-приложение
-            </div>
-
-        </div>
-
-        <button
-            class="icon-btn"
-            onclick="openCart()"
-        >
-            🛒
-        </button>
-
-    </header>
-
-
-    <!-- LOGO -->
-
-    <div class="logo-wrap">
+    <div class="header-left">
 
         <img
-            class="logo"
-            src="https://moskalukdenis002-blip.github.io/-kuricanevinovata/assets/7FE6A965-CC94-4604-8928-5CE9D6C08CE8.jpeg"
+            class="header-logo"
+            src="assets/7FE6A965-CC94-4604-8928-5CE9D6C08CE8.jpeg"
             alt="Курица не виновата"
+            onerror="this.style.display='none'"
         >
+
+        <div>
+            <div class="brand-name">Курица не виновата</div>
+            <div class="brand-sub">Виноват её вкус.</div>
+        </div>
 
     </div>
 
+    <button class="icon-btn" onclick="openCart()">🛒</button>
 
-    <!-- CITY -->
+</header>
 
-    <button
-        class="city"
-        onclick="chooseCity()"
-    >
+<div class="city-row">
 
-        📍
-
-        <span
-            class="city-name"
-            id="cityName"
-        >
-            Павлодар
-        </span>
-
-        ⌄
-
+    <button class="city-btn" onclick="openCity()">
+        📍 <span id="cityName">Павлодар</span>⌄
     </button>
 
+</div>
 
-    <!-- HERO -->
 
-    <section class="hero">
+<section class="hero">
+
+    <img
+        class="hero-image"
+        src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=900&q=90"
+        alt="Крылья"
+    >
+
+    <div class="hero-content">
 
         <div class="hero-small">
             ВИНОВАТ ЕЁ ВКУС
         </div>
 
-        <h1>
-
+        <div class="hero-title">
             НАСТОЯЩИЕ<br>
-
             КРЫЛЬЯ.<br>
+            <span>БЕЗ<br>ОПРАВДАНИЙ.</span>
+        </div>
 
-            <span>
-                БЕЗ<br>
-                ОПРАВДАНИЙ.
-            </span>
-
-        </h1>
-
-        <p class="hero-text">
-
+        <div class="hero-text">
             Сочные. Хрустящие. Незабываемые.<br>
+            Курица действительно не виновата.
+        </div>
 
-            <strong>
-                Курица действительно не виновата.
-            </strong>
-
-        </p>
-
-        <button
-            class="hero-btn"
-            onclick="scrollToMenu()"
-        >
+        <button class="hero-btn" onclick="openMenu()">
             Открыть меню →
         </button>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- MENU -->
+<div class="section">
 
-    <section
-        class="section"
-        id="menuSection"
-    >
+    <div class="section-head">
+        <div class="section-title">Что будем совершать?</div>
+    </div>
 
-        <div class="section-title">
-            Меню
-        </div>
+    <div class="categories">
 
+        <button class="category active" onclick="filterProducts('all',this)">
+            🍗 Всё
+        </button>
+
+        <button class="category" onclick="filterProducts('wings',this)">
+            🍗 Крылья
+        </button>
+
+        <button class="category" onclick="filterProducts('combo',this)">
+            🔥 Комбо
+        </button>
+
+        <button class="category" onclick="filterProducts('sauce',this)">
+            🥫 Соусы
+        </button>
+
+        <button class="category" onclick="filterProducts('drink',this)">
+            🥤 Напитки
+        </button>
+
+    </div>
+
+</div>
+
+
+<section class="section">
+
+    <div class="section-head">
+        <div class="section-title">Хиты</div>
+        <div class="section-link" onclick="openMenu()">Всё меню →</div>
+    </div>
+
+    <div class="products" id="homeProducts"></div>
+
+</section>
+
+
+<div class="promo">
+
+    <div class="promo-label">
+        ДЕЛО №001
+    </div>
+
+    <div class="promo-title">
+        Пора совершить преступление.
+    </div>
+
+    <div class="promo-text">
+        Выбирай крылья, добавляй соус и не пытайся оправдаться.
+        Мы всё равно знаем, кто виноват.
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- ================= MENU ================= -->
+
+<div id="menuPage" class="page">
+
+    <div class="menu-header">
+
+        <h1>МЕНЮ</h1>
+
+        <p>
+            Выбирай преступление по вкусу.
+        </p>
+
+    </div>
+
+    <div class="section">
 
         <div class="categories">
 
-            <button
-                class="category active"
-                onclick="filterCategory(this,'wings')"
-            >
+            <button class="category active" onclick="filterProducts('all',this)">
+                Всё
+            </button>
+
+            <button class="category" onclick="filterProducts('wings',this)">
                 🍗 Крылья
             </button>
 
-            <button
-                class="category"
-                onclick="filterCategory(this,'combo')"
-            >
+            <button class="category" onclick="filterProducts('combo',this)">
                 🔥 Комбо
             </button>
 
-            <button
-                class="category"
-                onclick="filterCategory(this,'sauce')"
-            >
+            <button class="category" onclick="filterProducts('sauce',this)">
                 🥫 Соусы
             </button>
 
-            <button
-                class="category"
-                onclick="filterCategory(this,'drinks')"
-            >
+            <button class="category" onclick="filterProducts('drink',this)">
                 🥤 Напитки
             </button>
 
         </div>
 
-    </section>
+        <div class="products" id="menuProducts"></div>
 
+    </div>
 
-    <!-- PRODUCTS -->
+</div>
 
-    <section class="section">
 
-        <div
-            class="products"
-            id="products"
-        >
+<!-- ================= CART ================= -->
 
+<div id="cartPage" class="page">
 
-            <!-- PRODUCT 1 -->
+    <div class="menu-header">
 
-            <div
-                class="product"
-                data-category="wings"
-            >
+        <h1>КОРЗИНА</h1>
 
-                <div class="product-img">
-                    🍗
-                </div>
+        <p>Здесь начинается твоё преступление.</p>
 
-                <div class="product-info">
+    </div>
 
-                    <div class="product-name">
-                        Крылья ×6
-                    </div>
+    <div class="section">
 
-                    <div class="product-desc">
-                        Хрустящие и сочные
-                    </div>
+        <div id="cartItems"></div>
 
-                    <div class="product-bottom">
+        <div id="emptyCart" class="cart-empty">
 
-                        <div class="price">
-                            2 490 ₸
-                        </div>
+            <div class="cart-empty-icon">🛒</div>
 
-                        <button
-                            class="add"
-                            onclick="addToCart('Крылья ×6',2490)"
-                        >
-                            +
-                        </button>
+            <h2>Корзина пуста</h2>
 
-                    </div>
+            <p>
+                Пока ничего подозрительного.
+            </p>
 
-                </div>
-
-            </div>
-
-
-            <!-- PRODUCT 2 -->
-
-            <div
-                class="product"
-                data-category="wings"
-            >
-
-                <div class="product-img">
-                    🍗
-                </div>
-
-                <div class="product-info">
-
-                    <div class="product-name">
-                        Крылья ×10
-                    </div>
-
-                    <div class="product-desc">
-                        Для тех, кто пришёл не один
-                    </div>
-
-                    <div class="product-bottom">
-
-                        <div class="price">
-                            3 790 ₸
-                        </div>
-
-                        <button
-                            class="add"
-                            onclick="addToCart('Крылья ×10',3790)"
-                        >
-                            +
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUCT 3 -->
-
-            <div
-                class="product"
-                data-category="combo"
-            >
-
-                <div class="product-img">
-                    🔥
-                </div>
-
-                <div class="product-info">
-
-                    <div class="product-name">
-                        Комбо №1
-                    </div>
-
-                    <div class="product-desc">
-                        Крылья + картофель + напиток
-                    </div>
-
-                    <div class="product-bottom">
-
-                        <div class="price">
-                            3 990 ₸
-                        </div>
-
-                        <button
-                            class="add"
-                            onclick="addToCart('Комбо №1',3990)"
-                        >
-                            +
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUCT 4 -->
-
-            <div
-                class="product"
-                data-category="wings"
-            >
-
-                <div class="product-img">
-                    🥵
-                </div>
-
-                <div class="product-info">
-
-                    <div class="product-name">
-                        Огненные ×6
-                    </div>
-
-                    <div class="product-desc">
-                        Осторожно. Это уже преступление.
-                    </div>
-
-                    <div class="product-bottom">
-
-                        <div class="price">
-                            2 690 ₸
-                        </div>
-
-                        <button
-                            class="add"
-                            onclick="addToCart('Огненные ×6',2690)"
-                        >
-                            +
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- INFO -->
-
-    <div class="info">
-
-        <div class="info-title">
-            Почему нас стоит попробовать?
-        </div>
-
-        <div class="info-text">
-
-            🍗 Хрустящая корочка<br>
-            🔥 Яркий вкус<br>
-            🥫 Авторские соусы<br>
-            🚀 Быстрая доставка
+            <button class="hero-btn" onclick="openMenu()">
+                Открыть меню
+            </button>
 
         </div>
 
@@ -909,96 +885,99 @@ button {
 </div>
 
 
-<!-- BOTTOM NAV -->
+<!-- ================= PROFILE ================= -->
+
+<div id="profilePage" class="page">
+
+    <div class="menu-header">
+
+        <h1>ПРОФИЛЬ</h1>
+
+        <p>Твои преступления будут здесь.</p>
+
+    </div>
+
+    <div class="profile-card">
+
+        <div class="profile-icon">🐔</div>
+
+        <h2>Курица не виновата</h2>
+
+        <p>
+            Виноват только её вкус.
+        </p>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<!-- ================= CART FOOTER ================= -->
+
+<div id="cartFooter" class="cart-footer" style="display:none">
+
+    <div class="cart-total-row">
+        <span>Итого</span>
+        <span id="cartTotal">0 ₸</span>
+    </div>
+
+    <button class="checkout" onclick="checkout()">
+        Совершить преступление →
+    </button>
+
+</div>
+
+
+<!-- ================= BOTTOM NAV ================= -->
 
 <nav class="bottom-nav">
 
-    <button
-        class="nav-item active"
-        onclick="goHome(this)"
-    >
-
-        <span class="nav-icon">
-            ⌂
-        </span>
-
+    <button class="nav-item active" id="navHome" onclick="showPage('home')">
+        <span class="nav-icon">⌂</span>
         Главная
-
     </button>
 
-
-    <button
-        class="nav-item"
-        onclick="scrollToMenu();setNav(this)"
-    >
-
-        <span class="nav-icon">
-            ⌕
-        </span>
-
+    <button class="nav-item" id="navMenu" onclick="showPage('menu')">
+        <span class="nav-icon">⌕</span>
         Меню
-
     </button>
 
-
-    <button
-        class="nav-item"
-        onclick="openCart();setNav(this)"
-    >
-
-        <span class="nav-icon">
-            🛒
-        </span>
-
+    <button class="nav-item" id="navCart" onclick="showPage('cart')">
+        <span class="nav-icon">🛒</span>
         Корзина
-
     </button>
 
-
-    <button
-        class="nav-item"
-        onclick="openProfile();setNav(this)"
-    >
-
-        <span class="nav-icon">
-            ♙
-        </span>
-
+    <button class="nav-item" id="navProfile" onclick="showPage('profile')">
+        <span class="nav-icon">♙</span>
         Профиль
-
     </button>
 
 </nav>
 
 
-<!-- MODAL -->
+<!-- ================= CITY MODAL ================= -->
 
-<div
-    class="modal"
-    id="modal"
-    onclick="closeOutside(event)"
->
+<div class="modal" id="cityModal" onclick="closeCity(event)">
 
-    <div class="modal-content">
+    <div class="modal-box" onclick="event.stopPropagation()">
 
-        <div
-            class="modal-title"
-            id="modalTitle"
-        >
-            Меню
+        <div class="modal-title">
+            Выбери город
         </div>
 
-        <div
-            class="modal-text"
-            id="modalText"
-        >
-        </div>
+        <button class="city-option" onclick="selectCity('Павлодар')">
+            📍 Павлодар
+        </button>
 
-        <button
-            class="modal-button"
-            onclick="closeModal()"
-        >
-            Закрыть
+        <button class="city-option" onclick="selectCity('Костанай')">
+            📍 Костанай
+        </button>
+
+        <button class="city-option" onclick="selectCity('Астана')">
+            📍 Астана
         </button>
 
     </div>
@@ -1006,421 +985,627 @@ button {
 </div>
 
 
+<div class="toast" id="toast"></div>
+
+
 <script>
 
-/* =========================
+/* =========================================
    TELEGRAM
-========================= */
+========================================= */
 
-const tg = window.Telegram
+const tg = window.Telegram && window.Telegram.WebApp
     ? window.Telegram.WebApp
     : null;
 
-if (tg) {
+if(tg){
 
     tg.ready();
-
     tg.expand();
 
-    try {
-        tg.setHeaderColor("#050505");
-        tg.setBackgroundColor("#050505");
-    } catch(e) {}
+    try{
+        tg.setHeaderColor("#080808");
+        tg.setBackgroundColor("#080808");
+    }catch(e){}
 
 }
 
 
-/* =========================
-   MODAL
-========================= */
+/* =========================================
+   PRODUCTS
+========================================= */
 
-function showModal(title, html) {
+const products = [
 
-    document.getElementById("modalTitle").innerText = title;
+    {
+        id:1,
+        category:"wings",
+        name:"Крылья Original",
+        desc:"Хрустящие снаружи. Сочные внутри.",
+        price:2990,
+        badge:"ХИТ",
+        image:"https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=800&q=90"
+    },
 
-    document.getElementById("modalText").innerHTML = html;
+    {
+        id:2,
+        category:"wings",
+        name:"Крылья Spicy",
+        desc:"Для тех, кто любит погорячее.",
+        price:3190,
+        badge:"ОГОНЬ",
+        image:"https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=800&q=90"
+    },
 
-    document
-        .getElementById("modal")
-        .classList
-        .add("show");
+    {
+        id:3,
+        category:"combo",
+        name:"Комбо №1",
+        desc:"Крылья + картофель + напиток.",
+        price:4490,
+        badge:"КОМБО",
+        image:"https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=800&q=90"
+    },
 
-}
+    {
+        id:4,
+        category:"combo",
+        name:"Комбо XL",
+        desc:"Для серьёзного преступления.",
+        price:5990,
+        badge:"XL",
+        image:"https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=90"
+    },
 
+    {
+        id:5,
+        category:"sauce",
+        name:"Сырный соус",
+        desc:"Густой. Сырный. Опасно вкусный.",
+        price:490,
+        badge:"",
+        image:"https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=800&q=90"
+    },
 
-function closeModal() {
+    {
+        id:6,
+        category:"sauce",
+        name:"Острый соус",
+        desc:"Мы предупреждали.",
+        price:490,
+        badge:"ОСТРО",
+        image:"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=90"
+    },
 
-    document
-        .getElementById("modal")
-        .classList
-        .remove("show");
+    {
+        id:7,
+        category:"drink",
+        name:"Cola",
+        desc:"Холодная и правильная.",
+        price:790,
+        badge:"",
+        image:"https://images.unsplash.com/photo-1629203849820-fdd70d49c38e?auto=format&fit=crop&w=800&q=90"
+    },
 
-}
-
-
-function closeOutside(event) {
-
-    if (
-        event.target ===
-        document.getElementById("modal")
-    ) {
-        closeModal();
+    {
+        id:8,
+        category:"drink",
+        name:"Лимонад",
+        desc:"Освежает после преступления.",
+        price:990,
+        badge:"",
+        image:"https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=90"
     }
 
-}
+];
 
 
-/* =========================
-   MENU
-========================= */
-
-function openMenu() {
-
-    scrollToMenu();
-
-}
-
-
-/* =========================
-   SCROLL TO MENU
-========================= */
-
-function scrollToMenu() {
-
-    const section =
-        document.getElementById("menuSection");
-
-    section.scrollIntoView({
-        behavior: "smooth"
-    });
-
-}
-
-
-/* =========================
+/* =========================================
    CART
-========================= */
+========================================= */
 
 let cart = [];
 
 
-function addToCart(name, price) {
+/* =========================================
+   FORMAT PRICE
+========================================= */
 
-    cart.push({
-        name: name,
-        price: price
-    });
+function money(value){
+
+    return value.toLocaleString("ru-RU") + " ₸";
+
+}
 
 
-    if (tg && tg.HapticFeedback) {
+/* =========================================
+   PRODUCT CARD
+========================================= */
 
-        try {
-            tg.HapticFeedback.impactOccurred("light");
-        } catch(e) {}
+function productCard(product){
+
+    return `
+
+        <div class="product">
+
+            <div class="product-img-wrap">
+
+                <img
+                    class="product-img"
+                    src="${product.image}"
+                    alt="${product.name}"
+                    loading="lazy"
+                    onerror="this.style.display='none'"
+                >
+
+                ${
+                    product.badge
+                    ?
+                    `<div class="product-badge">
+                        ${product.badge}
+                    </div>`
+                    :
+                    ""
+                }
+
+            </div>
+
+            <div class="product-info">
+
+                <div class="product-name">
+                    ${product.name}
+                </div>
+
+                <div class="product-desc">
+                    ${product.desc}
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ${money(product.price)}
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart(${product.id})"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================
+   RENDER PRODUCTS
+========================================= */
+
+function renderProducts(list = products){
+
+    const home = document.getElementById("homeProducts");
+    const menu = document.getElementById("menuProducts");
+
+    const html = list.map(productCard).join("");
+
+    if(home){
+        home.innerHTML = list.slice(0,4).map(productCard).join("");
+    }
+
+    if(menu){
+        menu.innerHTML = html;
+    }
+
+}
+
+
+/* =========================================
+   FILTER
+========================================= */
+
+function filterProducts(category,button){
+
+    if(button){
+
+        document
+            .querySelectorAll(".category")
+            .forEach(el => el.classList.remove("active"));
+
+        button.classList.add("active");
 
     }
 
+    let list = products;
 
-    showModal(
+    if(category !== "all"){
 
-        "🍗 Добавлено",
+        list = products.filter(
+            p => p.category === category
+        );
 
-        `
-        <b>${name}</b>
-        <br><br>
-        ${price.toLocaleString("ru-RU")} ₸
-        <br><br>
+    }
 
-        <button
-            class="modal-button red"
-            onclick="openCart()"
-        >
-            Перейти в корзину →
-        </button>
-        `
+    renderProducts(list);
 
+    showPage("menu");
+
+}
+
+
+/* =========================================
+   ADD TO CART
+========================================= */
+
+function addToCart(id){
+
+    const product = products.find(
+        p => p.id === id
+    );
+
+    if(!product) return;
+
+    const existing = cart.find(
+        item => item.id === id
+    );
+
+    if(existing){
+
+        existing.qty++;
+
+    }else{
+
+        cart.push({
+            ...product,
+            qty:1
+        });
+
+    }
+
+    renderCart();
+
+    showToast(
+        product.name + " добавлено 🍗"
     );
 
 }
 
 
-function openCart() {
+/* =========================================
+   CHANGE QTY
+========================================= */
 
-    if (cart.length === 0) {
+function changeQty(id,delta){
 
-        showModal(
+    const item = cart.find(
+        p => p.id === id
+    );
 
-            "🛒 Корзина",
+    if(!item) return;
 
-            `
-            Пока здесь пусто.
-            <br><br>
-            Но это легко исправить 🍗
-            `
+    item.qty += delta;
 
+    if(item.qty <= 0){
+
+        cart = cart.filter(
+            p => p.id !== id
         );
 
-        return;
     }
 
+    renderCart();
 
-    let total = 0;
-
-    let html = "";
+}
 
 
-    cart.forEach((item, index) => {
+/* =========================================
+   CART
+========================================= */
 
-        total += item.price;
+function renderCart(){
 
-        html += `
+    const container =
+        document.getElementById("cartItems");
 
-            <div
-                style="
-                    padding:12px 0;
-                    border-bottom:1px solid #333;
-                "
-            >
+    const empty =
+        document.getElementById("emptyCart");
 
-                <b>
+    const footer =
+        document.getElementById("cartFooter");
+
+    if(cart.length === 0){
+
+        container.innerHTML = "";
+
+        empty.style.display = "block";
+
+        footer.style.display = "none";
+
+        return;
+
+    }
+
+    empty.style.display = "none";
+
+    footer.style.display = "block";
+
+    container.innerHTML = cart.map(item => `
+
+        <div class="cart-item">
+
+            <img src="${item.image}">
+
+            <div class="cart-item-info">
+
+                <div class="cart-item-name">
                     ${item.name}
-                </b>
+                </div>
 
-                <br>
+                <div class="cart-item-price">
+                    ${money(item.price)}
+                </div>
 
-                ${item.price.toLocaleString("ru-RU")} ₸
+            </div>
 
-                <button
-                    onclick="removeFromCart(${index})"
-                    style="
-                        float:right;
-                        background:#292929;
-                        color:#ff654f;
-                        border-radius:10px;
-                        padding:5px 9px;
-                    "
-                >
-                    ×
+            <div class="qty">
+
+                <button onclick="changeQty(${item.id},-1)">
+                    −
+                </button>
+
+                <span>
+                    ${item.qty}
+                </span>
+
+                <button onclick="changeQty(${item.id},1)">
+                    +
                 </button>
 
             </div>
 
-        `;
-
-    });
-
-
-    html += `
-
-        <br>
-
-        <div
-            style="
-                font-size:20px;
-                font-weight:900;
-            "
-        >
-            Итого:
-            ${total.toLocaleString("ru-RU")} ₸
         </div>
 
-        <button
-            class="modal-button red"
-            onclick="checkout()"
-        >
-            Оформить заказ →
-        </button>
-
-    `;
+    `).join("");
 
 
-    showModal(
-        "🛒 Корзина",
-        html
+    const total = cart.reduce(
+        (sum,item) =>
+            sum + item.price * item.qty,
+        0
     );
 
-}
-
-
-function removeFromCart(index) {
-
-    cart.splice(index, 1);
-
-    openCart();
+    document.getElementById("cartTotal").textContent =
+        money(total);
 
 }
 
 
-/* =========================
-   CHECKOUT
-========================= */
+/* =========================================
+   OPEN CART
+========================================= */
 
-function checkout() {
+function openCart(){
 
-    showModal(
-
-        "🔥 Оформление заказа",
-
-        `
-        <b>Следующим этапом подключим:</b>
-
-        <br><br>
-
-        📍 Адрес доставки
-        <br>
-        📞 Телефон
-        <br>
-        🚚 Доставка
-        <br>
-        💳 Оплата
-        <br><br>
-
-        После этого заказ будет
-        автоматически уходить
-        тебе в Telegram.
-        `
-
-    );
+    showPage("cart");
 
 }
 
 
-/* =========================
-   CITY
-========================= */
+/* =========================================
+   OPEN MENU
+========================================= */
 
-function chooseCity() {
+function openMenu(){
 
-    showModal(
-
-        "📍 Выберите город",
-
-        `
-
-        <button
-            class="modal-button"
-            onclick="selectCity('Павлодар')"
-        >
-            📍 Павлодар
-        </button>
-
-
-        <button
-            class="modal-button"
-            onclick="selectCity('Костанай')"
-        >
-            📍 Костанай
-        </button>
-
-        `
-
-    );
+    showPage("menu");
 
 }
 
 
-function selectCity(city) {
+/* =========================================
+   PAGES
+========================================= */
+
+function showPage(page){
 
     document
-        .getElementById("cityName")
-        .innerText = city;
-
-    closeModal();
-
-}
-
-
-/* =========================
-   PROFILE
-========================= */
-
-function openProfile() {
-
-    showModal(
-
-        "♙ Профиль",
-
-        `
-        Здесь будет профиль клиента.
-
-        <br><br>
-
-        📦 История заказов
-        <br>
-        🎁 Бонусы
-        <br>
-        ❤️ Избранное
-        `
-
-    );
-
-}
-
-
-/* =========================
-   CATEGORY
-========================= */
-
-function filterCategory(button, category) {
-
-    document
-        .querySelectorAll(".category")
-        .forEach(
-            el => el.classList.remove("active")
-        );
-
-
-    button.classList.add("active");
+        .querySelectorAll(".page")
+        .forEach(el => el.classList.remove("active"));
 
 
     document
-        .querySelectorAll(".product")
-        .forEach(product => {
+        .getElementById(page + "Page")
+        .classList.add("active");
 
-            if (
-                product.dataset.category === category
-            ) {
-
-                product.style.display = "block";
-
-            } else {
-
-                product.style.display = "none";
-
-            }
-
-        });
-
-}
-
-
-/* =========================
-   NAVIGATION
-========================= */
-
-function setNav(button) {
 
     document
         .querySelectorAll(".nav-item")
-        .forEach(
-            el => el.classList.remove("active")
+        .forEach(el => el.classList.remove("active"));
+
+
+    const nav =
+        document.getElementById(
+            "nav" +
+            page.charAt(0).toUpperCase() +
+            page.slice(1)
         );
 
-    button.classList.add("active");
+    if(nav){
+        nav.classList.add("active");
+    }
 
-}
-
-
-function goHome(button) {
-
-    setNav(button);
 
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top:0,
+        behavior:"smooth"
     });
 
+
+    if(page === "cart"){
+        renderCart();
+    }
+
 }
+
+
+/* =========================================
+   CITY
+========================================= */
+
+function openCity(){
+
+    document
+        .getElementById("cityModal")
+        .classList.add("show");
+
+}
+
+function closeCity(event){
+
+    if(event.target.id === "cityModal"){
+
+        document
+            .getElementById("cityModal")
+            .classList.remove("show");
+
+    }
+
+}
+
+function selectCity(city){
+
+    document
+        .getElementById("cityName")
+        .textContent = city;
+
+    document
+        .getElementById("cityModal")
+        .classList.remove("show");
+
+    showToast(
+        "Город: " + city
+    );
+
+}
+
+
+/* =========================================
+   CHECKOUT
+========================================= */
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        showToast(
+            "Сначала добавь что-нибудь 🍗"
+        );
+
+        return;
+
+    }
+
+
+    const total = cart.reduce(
+        (sum,item) =>
+            sum + item.price * item.qty,
+        0
+    );
+
+
+    let text =
+        "Новый заказ\n\n";
+
+
+    cart.forEach(item => {
+
+        text +=
+            item.name +
+            " × " +
+            item.qty +
+            "\n";
+
+    });
+
+
+    text +=
+        "\nИтого: " +
+        money(total);
+
+
+    /*
+       Пока это тестовая кнопка.
+       Когда подключим backend/CRM,
+       сюда отправим настоящий заказ.
+    */
+
+    if(tg){
+
+        try{
+
+            tg.sendData(
+                JSON.stringify({
+                    type:"order",
+                    city:
+                        document.getElementById(
+                            "cityName"
+                        ).textContent,
+                    items:cart,
+                    total:total
+                })
+            );
+
+        }catch(e){}
+
+    }
+
+
+    showToast(
+        "Заказ подготовлен 🍗"
+    );
+
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+let toastTimer;
+
+function showToast(text){
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.textContent = text;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    },2200);
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+renderProducts();
+
+renderCart();
 
 </script>
 
