@@ -1,129 +1,1169 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Курица не виновата — Demo App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Курица не виновата</title>
+
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
 <style>
-:root{--bg:#080808;--panel:#141414;--panel2:#1b1b1b;--red:#ff2b20;--orange:#ff6a00;--white:#fff;--muted:#9a9a9a;--line:#292929;--green:#52d273}
-*{box-sizing:border-box}html,body{margin:0;background:#080808;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}button,input{font:inherit}button{border:0;cursor:pointer;color:inherit}.app{max-width:560px;margin:auto;padding:14px 14px 112px;min-height:100vh}.screen{display:none;animation:fade .18s ease}.screen.active{display:block}@keyframes fade{from{opacity:.2;transform:translateY(5px)}to{opacity:1;transform:none}}
-.header{display:flex;align-items:center;justify-content:space-between;height:48px;margin-bottom:10px}.iconbtn{width:42px;height:42px;border-radius:14px;background:#171717;border:1px solid #252525;display:grid;place-items:center;font-size:21px}.logo-mini{height:38px;width:auto;max-width:150px;object-fit:contain}.cartbtn{position:relative}.badge{position:absolute;right:-4px;top:-4px;background:var(--red);font-size:11px;min-width:19px;height:19px;padding:0 5px;border-radius:10px;display:grid;place-items:center;font-weight:900}
-.hero{position:relative;overflow:hidden;min-height:610px;border-radius:28px;background:#111 url('assets/wings.png') center/cover no-repeat;padding:24px 20px;display:flex;flex-direction:column;justify-content:flex-end}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28),rgba(0,0,0,.3) 38%,rgba(0,0,0,.9) 90%)}.hero>*{position:relative;z-index:1}.hero-logo{width:190px;max-width:70%;height:auto;object-fit:contain;margin:0 0 auto;filter:drop-shadow(0 5px 18px #000)}.location{display:inline-flex;align-items:center;gap:7px;background:rgba(20,20,20,.84);border:1px solid #454545;padding:10px 13px;border-radius:999px;font-weight:800;width:max-content;margin-bottom:20px}.location span{color:#ff5a45}.eyebrow{font-size:12px;text-transform:uppercase;font-weight:900;letter-spacing:1.5px;color:#ff6b55}.hero h1{font-size:43px;line-height:.92;letter-spacing:-2.4px;margin:9px 0 12px;max-width:430px}.hero h1 span{color:var(--red)}.hero p{color:#e5e5e5;font-size:15px;line-height:1.35;margin:0 0 18px}.cta{width:100%;background:var(--red);border-radius:17px;padding:16px 18px;font-weight:950;font-size:16px;box-shadow:0 10px 25px rgba(255,43,32,.22)}.cta:active,.add:active,.chip:active{transform:scale(.98)}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:12px}.feature{background:rgba(12,12,12,.8);border:1px solid #2b2b2b;border-radius:14px;padding:10px 7px;text-align:center;font-size:10px;color:#ddd}.feature b{display:block;font-size:17px;margin-bottom:3px}
-.section{margin-top:22px}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.section h2{font-size:25px;letter-spacing:-1px;margin:0}.muted{color:var(--muted);font-size:13px}.chips{display:flex;gap:8px;overflow:auto;padding-bottom:3px}.chip{background:#171717;border:1px solid #303030;padding:10px 14px;border-radius:999px;white-space:nowrap;font-weight:850}.chip.active{background:var(--red);border-color:var(--red)}
-.search{display:flex;align-items:center;gap:8px;background:#151515;border:1px solid #292929;border-radius:14px;padding:12px 14px;color:#888;margin:10px 0}.search input{flex:1;background:transparent;border:0;outline:0;color:#fff}.cards{display:grid;gap:10px}.dish{display:flex;gap:12px;align-items:center;background:linear-gradient(135deg,#161616,#111);border:1px solid #282828;border-radius:18px;padding:9px}.dish-img,.mini-img{background:#222 url('assets/wings.png') center/cover no-repeat}.dish-img{width:98px;height:98px;border-radius:14px;flex:none}.dish-info{min-width:0;flex:1}.dish h3{margin:0 0 5px;font-size:16px}.dish p{margin:0;color:#9d9d9d;font-size:12px;line-height:1.25}.dish-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:9px}.price{font-size:16px;font-weight:950}.add{width:38px;height:38px;border-radius:12px;background:var(--red);font-size:24px;font-weight:900}.empty{padding:30px;text-align:center;color:#aaa;background:#121212;border:1px dashed #333;border-radius:18px}
-.product-hero{height:320px;border-radius:25px;background:#111 url('assets/wings.png') center/cover no-repeat;position:relative;overflow:hidden}.product-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.72))}.product-content{margin-top:-65px;position:relative;z-index:1;padding:0 16px}.tag{display:inline-block;background:var(--red);padding:7px 10px;border-radius:999px;font-weight:900;font-size:12px}.product h1{font-size:31px;margin:10px 0 2px}.product .sub{color:#aaa}.product .bigprice{font-size:25px;font-weight:950;margin:10px 0}.qty{display:flex;align-items:center;gap:12px;background:#151515;border:1px solid #2a2a2a;padding:7px;border-radius:14px;width:max-content}.qty button{width:34px;height:34px;border-radius:10px;background:#242424;font-size:21px}.qty b{min-width:20px;text-align:center}.portion{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:13px 0}.portion button{background:#171717;border:1px solid #292929;border-radius:14px;padding:10px 4px;font-size:12px}.portion button.active{background:var(--red);border-color:var(--red)}
-.cart-list{display:grid;gap:9px}.cart-item{display:flex;gap:10px;align-items:center;background:#151515;border:1px solid #282828;border-radius:17px;padding:9px}.mini-img{width:62px;height:62px;border-radius:12px;flex:none}.cart-info{flex:1}.cart-info b{font-size:14px}.cart-info small{display:block;color:#999;margin-top:4px}.cart-actions{display:flex;align-items:center;gap:7px}.cart-actions button{width:29px;height:29px;border-radius:9px;background:#292929}.promo{display:flex;background:#151515;border:1px solid #292929;border-radius:14px;overflow:hidden;margin:14px 0}.promo input{min-width:0;flex:1;background:transparent;border:0;outline:0;color:#fff;padding:12px}.promo button{background:#202020;padding:0 16px}.total{display:flex;justify-content:space-between;font-size:20px;font-weight:950;margin:14px 0}
-.form{display:grid;gap:9px}.field{display:flex;gap:9px;align-items:center;background:#151515;border:1px solid #292929;border-radius:14px;padding:12px}.field input,.field textarea{flex:1;background:transparent;border:0;outline:0;color:#fff;resize:none}.toggle{display:grid;grid-template-columns:1fr 1fr;background:#151515;padding:4px;border-radius:14px}.toggle button{padding:11px;border-radius:11px;background:transparent;color:#aaa;font-weight:850}.toggle button.active{background:var(--red);color:#fff}.pay{display:grid;gap:8px;margin:4px 0 10px}.pay label{display:flex;align-items:center;gap:10px;background:#151515;border:1px solid #292929;border-radius:13px;padding:12px}.pay input{accent-color:var(--red)}
-.success{text-align:center;padding-top:30px}.success-logo{width:220px;max-width:80%;margin:auto;display:block}.success h1{font-size:37px;line-height:.95;margin:18px 0 8px}.success p{color:#aaa}.order-card{background:#111;border:1px solid #292929;border-radius:20px;padding:18px;margin-top:18px}.timeline{margin-top:15px}.step{display:flex;gap:12px;position:relative;padding:0 0 20px}.step:last-child{padding-bottom:0}.dot{width:20px;height:20px;border-radius:50%;border:2px solid #555;flex:none;margin-top:1px}.step.done .dot,.step.active .dot{background:var(--red);border-color:var(--red);box-shadow:0 0 0 5px rgba(255,43,32,.1)}.step:not(:last-child):after{content:"";position:absolute;left:9px;top:20px;width:2px;height:calc(100% - 17px);background:#333}.step.done:not(:last-child):after{background:var(--red)}.step b{display:block}.step small{color:#999;display:block;margin-top:3px}
-.profile-head{display:flex;align-items:center;gap:12px;background:#151515;border:1px solid #292929;padding:14px;border-radius:18px}.avatar{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#444;font-size:20px;font-weight:900}.profile-list{margin-top:10px;display:grid}.profile-row{display:flex;align-items:center;gap:11px;padding:15px 4px;border-bottom:1px solid #232323}.profile-row span:nth-child(2){flex:1}.profile-row small{color:#aaa}.side{position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:20;display:none}.side.open{display:block}.side-panel{width:min(390px,88%);height:100%;background:#101010;padding:20px 16px;box-shadow:20px 0 60px #000}.side-logo{width:180px;height:auto;margin:0 0 22px}.side-row{display:flex;align-items:center;gap:12px;padding:15px 7px;border-bottom:1px solid #252525;font-weight:800}.side-close{float:right}.side-note{margin-top:30px;font-size:22px;font-style:italic;color:#eee}.side-note span{color:#ff5a45}
-.bottom-nav{position:fixed;left:50%;transform:translateX(-50%);bottom:10px;width:min(532px,calc(100% - 20px));background:rgba(17,17,17,.97);border:1px solid #292929;border-radius:21px;padding:8px;display:grid;grid-template-columns:repeat(4,1fr);z-index:15;box-shadow:0 14px 35px #000}.nav-btn{background:transparent;color:#888;padding:6px 2px;border-radius:14px;font-size:10px;font-weight:850}.nav-btn.active{color:#fff;background:#1e1e1e}.nav-ico{display:block;font-size:18px;margin-bottom:2px}.test-panel{position:fixed;left:10px;right:10px;bottom:83px;background:#0d0d0d;border:1px solid #3b3b3b;border-radius:18px;padding:12px;z-index:14;display:none;box-shadow:0 12px 40px #000}.test-panel.open{display:block}.test-title{font-weight:950;margin-bottom:9px}.test-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.test-btn{background:#191919;border:1px solid #333;border-radius:11px;padding:9px;font-size:11px;font-weight:800;text-align:left}.test-btn.red{background:var(--red);border-color:var(--red)}.test-city{display:flex;gap:7px;overflow:auto;margin-top:9px}.test-city button{white-space:nowrap;background:#191919;border:1px solid #333;border-radius:999px;padding:8px 12px;font-size:11px}.test-city button.active{background:var(--red);border-color:var(--red)}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:85px;background:#f2f2f2;color:#111;padding:11px 16px;border-radius:14px;font-weight:850;z-index:50;opacity:0;pointer-events:none;transition:.2s;max-width:90%;text-align:center}.toast.show{opacity:1}.hide{display:none!important}
-@media(min-width:560px){.app{padding-left:0;padding-right:0}.bottom-nav{bottom:16px}}
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    background: #f7f3ed;
+    color: #171717;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+button {
+    font: inherit;
+    border: 0;
+    cursor: pointer;
+}
+
+.app {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 95px;
+}
+
+/* HEADER */
+
+.header {
+    background: #ff641f;
+    padding: 18px 18px 22px;
+    border-radius: 0 0 28px 28px;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 62px;
+    height: 62px;
+    object-fit: cover;
+    border-radius: 50%;
+    background: white;
+}
+
+.brand {
+    flex: 1;
+}
+
+.brand-title {
+    font-size: 22px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.brand-subtitle {
+    margin-top: 5px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.city-button {
+    background: #171717;
+    color: white;
+    padding: 11px 13px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: 13px;
+}
+
+/* CITY */
+
+.city-panel {
+    display: none;
+    background: white;
+    margin-top: 12px;
+    border-radius: 18px;
+    padding: 8px;
+}
+
+.city-panel.active {
+    display: block;
+}
+
+.city-option {
+    width: 100%;
+    text-align: left;
+    background: white;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: 800;
+}
+
+.city-option:active {
+    background: #f1f1f1;
+}
+
+/* CONTENT */
+
+.content {
+    padding: 20px 16px;
+}
+
+.hero {
+    background: #171717;
+    color: white;
+    border-radius: 24px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.hero-small {
+    color: #ff641f;
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: 29px;
+    line-height: 1;
+    margin: 8px 0;
+}
+
+.hero p {
+    margin: 0;
+    color: #d7d7d7;
+    font-size: 14px;
+}
+
+/* CATEGORIES */
+
+.section-title {
+    font-size: 21px;
+    font-weight: 900;
+    margin: 22px 0 12px;
+}
+
+.categories {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.categories::-webkit-scrollbar {
+    display: none;
+}
+
+.category {
+    flex-shrink: 0;
+    background: white;
+    border: 2px solid transparent;
+    padding: 11px 15px;
+    border-radius: 14px;
+    font-weight: 800;
+}
+
+.category.active {
+    background: #171717;
+    color: white;
+}
+
+/* PRODUCTS */
+
+.products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.product {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,.06);
+}
+
+.product-image {
+    height: 145px;
+    background: #ff641f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 65px;
+}
+
+.product-body {
+    padding: 12px;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 1.05;
+}
+
+.product-description {
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+    min-height: 30px;
+}
+
+.product-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.add {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: #171717;
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* CART */
+
+.cart {
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: 72px;
+    max-width: 572px;
+    margin: auto;
+    z-index: 20;
+}
+
+.cart-button {
+    width: 100%;
+    background: #ff641f;
+    color: #171717;
+    padding: 16px 18px;
+    border-radius: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 900;
+    box-shadow: 0 8px 25px rgba(0,0,0,.18);
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 66px;
+    background: #171717;
+    display: flex;
+    justify-content: center;
+    z-index: 30;
+}
+
+.nav-inner {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+}
+
+.nav-button {
+    flex: 1;
+    background: transparent;
+    color: #888;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.nav-button.active {
+    color: #ff641f;
+}
+
+/* MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    display: none;
+    align-items: flex-end;
+    z-index: 100;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-box {
+    width: 100%;
+    max-width: 600px;
+    margin: auto auto 0;
+    background: #f7f3ed;
+    border-radius: 28px 28px 0 0;
+    padding: 22px 18px 35px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.modal-close {
+    width: 100%;
+    background: #171717;
+    color: white;
+    padding: 15px;
+    border-radius: 16px;
+    font-weight: 900;
+    margin-top: 15px;
+}
+
+.cart-item {
+    background: white;
+    border-radius: 16px;
+    padding: 13px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-name {
+    font-weight: 900;
+}
+
+.cart-item-price {
+    font-size: 13px;
+    color: #777;
+    margin-top: 3px;
+}
+
+.qty {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.qty button {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: #171717;
+    color: white;
+}
+
+.total {
+    background: #ff641f;
+    border-radius: 18px;
+    padding: 17px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 900;
+}
+
+/* ORDER */
+
+.order-input {
+    width: 100%;
+    border: 0;
+    background: white;
+    border-radius: 14px;
+    padding: 15px;
+    margin-top: 9px;
+    outline: none;
+    font-size: 15px;
+}
+
+.order-button {
+    width: 100%;
+    margin-top: 14px;
+    background: #171717;
+    color: white;
+    padding: 16px;
+    border-radius: 16px;
+    font-weight: 900;
+}
+
+/* DESKTOP */
+
+@media (min-width: 601px) {
+    .bottom-nav {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 600px;
+    }
+}
 </style>
 </head>
+
 <body>
+
 <div class="app">
-  <section id="home" class="screen active">
-    <div class="header"><button class="iconbtn" onclick="openSide()">☰</button><img class="logo-mini" src="assets/logo.png"><button class="iconbtn cartbtn" onclick="go('cart')">🛒<span class="badge" id="cartBadge">0</span></button></div>
-    <div class="hero">
-      <img class="hero-logo" src="assets/logo.png">
-      <button class="location" onclick="go('cities')">📍 <span id="homeCity">Павлодар</span>⌄</button>
-      <div class="eyebrow">Виноват её вкус</div>
-      <h1>НАСТОЯЩИЕ<br>КРЫЛЬЯ.<br><span>БЕЗ ОПРАВДАНИЙ.</span></h1>
-      <p>Сочные. Хрустящие. Незабываемые.<br><b>Курица действительно не виновата.</b></p>
-      <button class="cta" onclick="go('menu')">Открыть меню →</button>
-      <div class="features"><div class="feature"><b>🔥</b>Сочные</div><div class="feature"><b>🌿</b>Свежие ингредиенты</div><div class="feature"><b>🚚</b>Быстрая доставка</div></div>
-    </div>
-  </section>
 
-  <section id="menu" class="screen">
-    <div class="header"><button class="iconbtn" onclick="openSide()">☰</button><img class="logo-mini" src="assets/logo.png"><button class="iconbtn cartbtn" onclick="go('cart')">🛒<span class="badge" id="cartBadge2">0</span></button></div>
-    <button class="location" onclick="go('cities')">📍 <span id="menuCity">Павлодар</span>⌄</button>
-    <div class="search">⌕<input id="searchInput" placeholder="Поиск блюда..." oninput="renderMenu()"></div>
-    <div class="chips" id="chips"></div>
-    <div class="section"><div class="section-head"><h2 id="menuTitle">Крылья</h2><span class="muted" id="menuCount"></span></div><div class="cards" id="menuList"></div></div>
-  </section>
+    <!-- HEADER -->
 
-  <section id="product" class="screen product">
-    <div class="header"><button class="iconbtn" onclick="go('menu')">←</button><button class="iconbtn">♡</button></div>
-    <div class="product-hero"></div><div class="product-content"><span class="tag">🔥 ХИТ</span><h1 id="productName">Классические</h1><div class="sub" id="productSub">Тот самый хруст.</div><div class="bigprice" id="productPrice">2 990 ₸</div><p id="productDesc" class="muted" style="line-height:1.5"></p><b>Выберите порцию</b><div class="portion"><button class="active" onclick="selectPortion(this,6,2990)">6 шт.<br>2 990 ₸</button><button onclick="selectPortion(this,12,5490)">12 шт.<br>5 490 ₸</button><button onclick="selectPortion(this,18,7990)">18 шт.<br>7 990 ₸</button></div><div style="display:flex;gap:9px;align-items:center"><div class="qty"><button onclick="changeQty(-1)">−</button><b id="productQty">1</b><button onclick="changeQty(1)">+</button></div><button class="cta" style="flex:1" onclick="addProduct()">Добавить в корзину</button></div></div>
-  </section>
+    <header class="header">
 
-  <section id="cart" class="screen">
-    <div class="header"><button class="iconbtn" onclick="go('menu')">←</button><h2 style="margin:0">Корзина</h2><button class="iconbtn" onclick="clearCart()">⌫</button></div>
-    <div id="cartList" class="cart-list"></div><div class="promo"><input id="promo" placeholder="Промокод"><button onclick="applyPromo()">→</button></div><div class="total"><span>Итого:</span><span id="cartTotal">0 ₸</span></div><button class="cta" onclick="go('checkout')">Оформить заказ →</button>
-  </section>
+        <div class="top">
 
-  <section id="cities" class="screen">
-    <div class="header"><button class="iconbtn" onclick="go(lastScreen||'home')">←</button><h2 style="margin:0">Выберите город</h2><div style="width:42px"></div></div>
-    <div class="search">⌕<input placeholder="Поиск города..." oninput="filterCities(this.value)"></div><div id="cityList" class="cards"></div><div class="empty" style="margin-top:12px">Не нашли свой город?<br>Напишите нам — мы сообщим, когда откроемся!</div>
-  </section>
+            <img
+                class="logo"
+                src="assets/7FE6A965-CC94-4604-8928-5CE9D6C08CE8.jpeg"
+                alt="Курица не виновата"
+            >
 
-  <section id="checkout" class="screen">
-    <div class="header"><button class="iconbtn" onclick="go('cart')">←</button><h2 style="margin:0">Оформление заказа</h2><div style="width:42px"></div></div>
-    <div class="toggle"><button class="active" onclick="setDelivery(this,'delivery')">Доставка</button><button onclick="setDelivery(this,'pickup')">Самовывоз</button></div>
-    <div class="form" style="margin-top:10px"><div class="field">👤<input id="name" placeholder="Ваше имя" value="Иван"></div><div class="field">☎️<input id="phone" placeholder="Телефон" value="+7 777 123 45 67"></div><div class="field" id="addressField">📍<input id="address" placeholder="Адрес доставки" value="ул. Ломова, 123"></div><div class="field">💬<textarea id="comment" rows="2" placeholder="Комментарий">Домофон 45, не звонить</textarea></div><div class="field">⏱️<input value="Как можно скорее" readonly></div></div>
-    <div class="section"><b>Способ оплаты</b><div class="pay"><label><input type="radio" name="pay" checked> 🔴 Kaspi (онлайн)</label><label><input type="radio" name="pay"> 💵 При получении</label><label><input type="radio" name="pay"> 💳 Другая карта</label></div></div>
-    <button class="cta" onclick="placeOrder()">Подтвердить заказ →</button>
-  </section>
+            <div class="brand">
+                <div class="brand-title">
+                    КУРИЦА<br>НЕ ВИНОВАТА
+                </div>
 
-  <section id="success" class="screen success"><img src="assets/logo.png" class="success-logo"><h1>ЗАКАЗ ПРИНЯТ!</h1><p>№<b id="successNo">1042</b><br>Спасибо! Мы уже готовим твои крылья.<br>Следи за статусом в приложении.</p><button class="cta" onclick="go('status')">Перейти к заказу →</button><div class="order-card">🎁 <b>Бонусы за заказы</b><br><span class="muted">Копи баллы и получай вкусные подарки!</span></div></section>
+                <div class="brand-subtitle">
+                    Виноват её вкус.
+                </div>
+            </div>
 
-  <section id="status" class="screen"><div class="header"><button class="iconbtn" onclick="go('home')">←</button><h2 style="margin:0">Мой заказ</h2><div style="width:42px"></div></div><div style="text-align:center;color:#aaa">№<b id="statusNo">1042</b></div><div class="order-card timeline"><div class="step done"><div class="dot"></div><div><b>Заказ принят</b><small>12:45</small></div></div><div class="step active"><div class="dot"></div><div><b>Готовится</b><small>Примерное время: 15–20 мин</small></div></div><div class="step"><div class="dot"></div><div><b>Готов</b></div></div><div class="step"><div class="dot"></div><div><b>Курьер в пути</b></div></div><div class="step"><div class="dot"></div><div><b>Доставлен</b></div></div></div><div class="order-card">🔔 Мы уведомим тебя, когда заказ будет готов.</div></section>
+            <button class="city-button" onclick="toggleCities()">
+                📍 <span id="currentCity">Павлодар</span>
+            </button>
 
-  <section id="profile" class="screen"><div class="header"><button class="iconbtn" onclick="openSide()">☰</button><h2 style="margin:0">Профиль</h2><button class="iconbtn">⚙️</button></div><div class="profile-head"><div class="avatar" id="avatar">И</div><div><b id="profileName">Иван</b><div class="muted">+7 777 123 45 67</div></div></div><div class="profile-list"><div class="profile-row" onclick="go('status')">🧾<span>Мои заказы</span>›</div><div class="profile-row">♡<span>Любимые блюда</span>›</div><div class="profile-row">📍<span>Мои адреса</span>›</div><div class="profile-row">🏷️<span>Промокоды</span>›</div><div class="profile-row">🎁<span>Бонусы</span><small>320 ₸</small>›</div><div class="profile-row" onclick="go('cities')">🌍<span>Выбрать город</span><small id="profileCity">Павлодар</small>›</div><div class="profile-row">◌<span>Поддержка</span>›</div><div class="profile-row">ⓘ<span>О приложении</span>›</div></div></section>
+        </div>
+
+        <div class="city-panel" id="cityPanel">
+
+            <button class="city-option" onclick="selectCity('Павлодар')">
+                📍 Павлодар
+            </button>
+
+            <button class="city-option" onclick="selectCity('Костанай')">
+                📍 Костанай
+            </button>
+
+            <button class="city-option" onclick="selectCity('Астана')">
+                📍 Астана
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="content">
+
+        <section class="hero">
+
+            <div class="hero-small">
+                Сегодня можно
+            </div>
+
+            <h1>
+                Совершить<br>
+                преступление 🍗
+            </h1>
+
+            <p>
+                Хрустящие крылья.<br>
+                Соусы. Комбо. И никаких оправданий.
+            </p>
+
+        </section>
+
+
+        <div class="section-title">
+            Меню
+        </div>
+
+
+        <div class="categories">
+
+            <button
+                class="category active"
+                onclick="filterProducts('Крылья', this)"
+            >
+                🍗 Крылья
+            </button>
+
+            <button
+                class="category"
+                onclick="filterProducts('Комбо', this)"
+            >
+                🔥 Комбо
+            </button>
+
+            <button
+                class="category"
+                onclick="filterProducts('Соусы', this)"
+            >
+                🥫 Соусы
+            </button>
+
+            <button
+                class="category"
+                onclick="filterProducts('Напитки', this)"
+            >
+                🥤 Напитки
+            </button>
+
+        </div>
+
+
+        <div class="products" id="products"></div>
+
+    </main>
+
 </div>
 
-<div class="side" id="side" onclick="if(event.target===this)closeSide()"><div class="side-panel"><button class="iconbtn side-close" onclick="closeSide()">×</button><img src="assets/logo.png" class="side-logo"><div class="side-row" onclick="closeSide();go('home')">⌂ <span>Главная</span></div><div class="side-row" onclick="closeSide();go('menu')">🍗 <span>Меню</span></div><div class="side-row" onclick="closeSide();go('cart')">🛒 <span>Корзина</span><span class="badge" style="position:static">0</span></div><div class="side-row">♡ <span>Акции</span></div><div class="side-row" onclick="closeSide();go('cities')">📍 <span>Наши города</span></div><div class="side-row">ⓘ <span>О нас</span></div><div class="side-row">◌ <span>Поддержка</span></div><div class="side-note">Виноват <span>её вкус.</span> ❤️</div></div></div>
 
-<div class="test-panel" id="testPanel"><div class="test-title">🧪 Тестовые страницы</div><div class="test-grid"><button class="test-btn red" onclick="go('home')">🏠 Главная →</button><button class="test-btn" onclick="go('menu')">🍗 Меню →</button><button class="test-btn" onclick="openProduct('classic')">🍗 Карточка блюда →</button><button class="test-btn" onclick="go('cart')">🛒 Корзина →</button><button class="test-btn" onclick="go('checkout')">📝 Оформление →</button><button class="test-btn" onclick="go('success')">✅ Заказ принят →</button><button class="test-btn" onclick="go('status')">📦 Статус заказа →</button><button class="test-btn" onclick="go('profile')">👤 Профиль →</button></div><div class="test-title" style="margin-top:12px">🏙 Выбор города (тест)</div><div class="test-city"><button class="active" onclick="selectCity('Павлодар')">Павлодар</button><button onclick="selectCity('Костанай')">Костанай</button><button onclick="selectCity('Астана')">Астана</button><button onclick="selectCity('Алматы')">Алматы</button></div></div>
-<div class="bottom-nav"><button class="nav-btn active" id="navHome" onclick="go('home')"><span class="nav-ico">⌂</span>Главная</button><button class="nav-btn" id="navMenu" onclick="go('menu')"><span class="nav-ico">⌕</span>Меню</button><button class="nav-btn" id="navCart" onclick="go('cart')"><span class="nav-ico">🛒</span>Корзина</button><button class="nav-btn" id="navProfile" onclick="go('profile')"><span class="nav-ico">♙</span>Профиль</button></div>
-<button id="testToggle" onclick="toggleTests()" style="position:fixed;right:12px;bottom:86px;z-index:16;width:42px;height:42px;border-radius:14px;background:#1b1b1b;border:1px solid #333;font-size:18px">🧪</button>
-<div class="toast" id="toast"></div>
+<!-- CART -->
+
+<div class="cart">
+
+    <button class="cart-button" onclick="openCart()">
+
+        <span>
+            🛒 Корзина
+            <span id="cartCount">0</span>
+        </span>
+
+        <span id="cartTotal">
+            0 ₸
+        </span>
+
+    </button>
+
+</div>
+
+
+<!-- BOTTOM NAV -->
+
+<nav class="bottom-nav">
+
+    <div class="nav-inner">
+
+        <button class="nav-button active" onclick="goHome()">
+            🏠<br>Главная
+        </button>
+
+        <button class="nav-button" onclick="openCart()">
+            🛒<br>Корзина
+        </button>
+
+        <button class="nav-button" onclick="showInfo()">
+            ℹ️<br>О нас
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- CART MODAL -->
+
+<div class="modal" id="cartModal">
+
+    <div class="modal-box">
+
+        <h2>🛒 Твоя улика</h2>
+
+        <div id="cartItems"></div>
+
+        <div class="total">
+
+            <span>Итого</span>
+
+            <span id="modalTotal">
+                0 ₸
+            </span>
+
+        </div>
+
+        <button class="order-button" onclick="openOrder()">
+            Совершить преступление →
+        </button>
+
+        <button class="modal-close" onclick="closeCart()">
+            Вернуться к меню
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ORDER MODAL -->
+
+<div class="modal" id="orderModal">
+
+    <div class="modal-box">
+
+        <h2>🚨 Оформление заказа</h2>
+
+        <p>
+            <b id="orderCity">Павлодар</b>
+        </p>
+
+        <input
+            class="order-input"
+            id="customerName"
+            placeholder="Имя"
+        >
+
+        <input
+            class="order-input"
+            id="customerPhone"
+            placeholder="Телефон"
+            type="tel"
+        >
+
+        <input
+            class="order-input"
+            id="customerAddress"
+            placeholder="Адрес доставки"
+        >
+
+        <button class="order-button" onclick="sendOrder()">
+            🍗 Заказать
+        </button>
+
+        <button class="modal-close" onclick="closeOrder()">
+            Назад
+        </button>
+
+    </div>
+
+</div>
+
+
 <script>
-const tg=window.Telegram?.WebApp;if(tg){tg.ready();tg.expand();try{tg.setHeaderColor('#080808');tg.setBackgroundColor('#080808')}catch(e){}}
-const IMG='assets/wings.png';
-const products=[
-{id:'classic',cat:'Крылья',name:'Классические',sub:'Тот самый хруст.',price:2990,desc:'Сочные куриные крылья в фирменном маринаде. Идеальный баланс вкуса. Виноват её вкус.'},
-{id:'hot',cat:'Крылья',name:'Острые',sub:'Для тех, кто любит погорячее.',price:2990,desc:'Яркая острота, хрустящая корочка и тот самый вкус, который сложно забыть.'},
-{id:'cheese',cat:'Крылья',name:'С сыром',sub:'Нежные и ароматные.',price:3290,desc:'Хрустящие крылья с насыщенным сырным вкусом.'},
-{id:'bbq',cat:'Крылья',name:'BBQ',sub:'Насыщенный вкус.',price:2990,desc:'Фирменный BBQ с дымным характером.'},
-{id:'combo',cat:'Комбо',name:'Комбо на двоих',sub:'Крылья + картофель + соус.',price:5990,desc:'Всё, что нужно для большого преступления.'},
-{id:'sauce',cat:'Соусы',name:'Соус BBQ',sub:'Фирменный дымный.',price:490,desc:'Соус, который исчезает первым.'},
-{id:'garlic',cat:'Соусы',name:'Чесночный',sub:'Нежный и яркий.',price:490,desc:'Для тех, кто любит поострее в хорошем смысле.'},
-{id:'cola',cat:'Напитки',name:'Coca-Cola',sub:'0,5 л',price:500,desc:'Классика к крыльям.'}
+
+const tg = window.Telegram?.WebApp;
+
+if (tg) {
+    tg.ready();
+    tg.expand();
+}
+
+
+/* =========================
+   ГОРОДА
+========================= */
+
+let currentCity = "Павлодар";
+
+function toggleCities() {
+
+    const panel = document.getElementById("cityPanel");
+
+    panel.classList.toggle("active");
+}
+
+function selectCity(city) {
+
+    currentCity = city;
+
+    document.getElementById("currentCity").innerText = city;
+
+    document.getElementById("orderCity").innerText = city;
+
+    document
+        .getElementById("cityPanel")
+        .classList.remove("active");
+
+    if (tg) {
+        tg.HapticFeedback.impactOccurred("light");
+    }
+}
+
+
+/* =========================
+   ТОВАРЫ
+========================= */
+
+const products = [
+
+    {
+        id: 1,
+        name: "Крылья классические",
+        description: "Хрустящие. Сочные. Без оправданий.",
+        price: 2490,
+        category: "Крылья",
+        emoji: "🍗"
+    },
+
+    {
+        id: 2,
+        name: "Крылья острые",
+        description: "Для тех, кто любит риск.",
+        price: 2690,
+        category: "Крылья",
+        emoji: "🌶️🍗"
+    },
+
+    {
+        id: 3,
+        name: "Крылья BBQ",
+        description: "Дымно. Сочно. Опасно вкусно.",
+        price: 2790,
+        category: "Крылья",
+        emoji: "🍗🔥"
+    },
+
+    {
+        id: 4,
+        name: "Комбо №1",
+        description: "Крылья + картофель + соус + напиток.",
+        price: 3990,
+        category: "Комбо",
+        emoji: "🍗🍟🥤"
+    },
+
+    {
+        id: 5,
+        name: "Комбо №2",
+        description: "Большая порция для большого преступления.",
+        price: 4990,
+        category: "Комбо",
+        emoji: "🍗🍗🍟"
+    },
+
+    {
+        id: 6,
+        name: "Сырный соус",
+        description: "Главный сообщник.",
+        price: 390,
+        category: "Соусы",
+        emoji: "🧀"
+    },
+
+    {
+        id: 7,
+        name: "BBQ соус",
+        description: "Дымная улика.",
+        price: 390,
+        category: "Соусы",
+        emoji: "🥫"
+    },
+
+    {
+        id: 8,
+        name: "Кола",
+        description: "Чтобы запить доказательства.",
+        price: 590,
+        category: "Напитки",
+        emoji: "🥤"
+    }
+
 ];
-let cart=JSON.parse(localStorage.getItem('knv_cart')||'[]'), city=localStorage.getItem('knv_city')||'Павлодар', category='Крылья', currentProduct=null, productQty=1, portion={qty:6,price:2990}, lastScreen='home', delivery='delivery';
-function money(n){return new Intl.NumberFormat('ru-RU').format(n)+' ₸'}
-function save(){localStorage.setItem('knv_cart',JSON.stringify(cart));updateBadges()}
-function updateBadges(){const n=cart.reduce((s,x)=>s+x.qty,0);['cartBadge','cartBadge2'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=n});document.querySelectorAll('.side-row .badge').forEach(e=>e.textContent=n);document.getElementById('cartBadge')?.classList.toggle('hide',!n);document.getElementById('cartBadge2')?.classList.toggle('hide',!n)}
-function go(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id)?.classList.add('active');lastScreen=id;window.scrollTo({top:0,behavior:'smooth'});updateNav(id);if(id==='menu')renderMenu();if(id==='cart')renderCart();if(id==='cities')renderCities();if(id==='success'){document.getElementById('successNo').textContent=localStorage.getItem('knv_order')||'1042'}if(id==='status')document.getElementById('statusNo').textContent=localStorage.getItem('knv_order')||'1042';closeSide()}
-function updateNav(id){['navHome','navMenu','navCart','navProfile'].forEach(x=>document.getElementById(x)?.classList.remove('active'));if(['home'].includes(id))document.getElementById('navHome').classList.add('active');if(['menu','product'].includes(id))document.getElementById('navMenu').classList.add('active');if(['cart','checkout','success','status'].includes(id))document.getElementById('navCart').classList.add('active');if(id==='profile')document.getElementById('navProfile').classList.add('active')}
-function openSide(){document.getElementById('side').classList.add('open')}function closeSide(){document.getElementById('side').classList.remove('open')}
-function toggleTests(){document.getElementById('testPanel').classList.toggle('open')}
-function renderMenu(){const q=(document.getElementById('searchInput')?.value||'').toLowerCase();const list=products.filter(p=>p.cat===category&&(!q||p.name.toLowerCase().includes(q)||p.sub.toLowerCase().includes(q)));document.getElementById('menuTitle').textContent=category;document.getElementById('menuCount').textContent=list.length+' позиции';document.getElementById('chips').innerHTML=['Крылья','Комбо','Соусы','Напитки'].map(c=>`<button class="chip ${c===category?'active':''}" onclick="setCategory('${c}')">${c}</button>`).join('');document.getElementById('menuList').innerHTML=list.length?list.map(p=>`<article class="dish" onclick="openProduct('${p.id}')"><div class="dish-img"></div><div class="dish-info"><h3>${p.name}</h3><p>${p.sub}</p><div class="dish-bottom"><span class="price">${money(p.price)}</span><button class="add" onclick="event.stopPropagation();quickAdd('${p.id}')">+</button></div></div></article>`).join(''):'<div class="empty">Пока здесь пусто. Добавим блюда позже 🍗</div>'}
-function setCategory(c){category=c;renderMenu()}
-function openProduct(id){currentProduct=products.find(p=>p.id===id)||products[0];productQty=1;portion={qty:6,price:currentProduct.price};document.getElementById('productName').textContent=currentProduct.name;document.getElementById('productSub').textContent=currentProduct.sub;document.getElementById('productPrice').textContent=money(currentProduct.price);document.getElementById('productDesc').textContent=currentProduct.desc;document.getElementById('productQty').textContent=1;document.querySelectorAll('.portion button').forEach((b,i)=>b.classList.toggle('active',i===0));go('product')}
-function selectPortion(btn,q,p){document.querySelectorAll('.portion button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');portion={qty:q,price:p};document.getElementById('productPrice').textContent=money(p)}
-function changeQty(d){productQty=Math.max(1,productQty+d);document.getElementById('productQty').textContent=productQty}
-function quickAdd(id){const p=products.find(x=>x.id===id);addToCart(p,1,p.price,1);toast(p.name+' добавлены в корзину 🍗')}
-function addProduct(){addToCart(currentProduct,productQty,portion.price,portion.qty);toast(currentProduct.name+' добавлены в корзину 🍗');setTimeout(()=>go('cart'),350)}
-function addToCart(p,qty,unit,portionQty){const key=p.id+'-'+unit+'-'+portionQty;const x=cart.find(i=>i.key===key);if(x)x.qty+=qty;else cart.push({key,id:p.id,name:p.name,price:unit,qty,portionQty});save()}
-function renderCart(){const box=document.getElementById('cartList');if(!cart.length){box.innerHTML='<div class="empty">Корзина пуста.<br>Но это легко исправить 🍗</div>';document.getElementById('cartTotal').textContent=money(0);return}box.innerHTML=cart.map((x,i)=>`<div class="cart-item"><div class="mini-img"></div><div class="cart-info"><b>${x.name}</b><small>${x.portionQty?x.portionQty+' шт. · ':''}${money(x.price)}</small></div><div class="cart-actions"><button onclick="cartQty(${i},-1)">−</button><b>${x.qty}</b><button onclick="cartQty(${i},1)">+</button></div><button onclick="removeCart(${i})" style="background:transparent;color:#777;font-size:18px">×</button></div>`).join('');document.getElementById('cartTotal').textContent=money(cart.reduce((s,x)=>s+x.price*x.qty,0))}
-function cartQty(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);save();renderCart()}
-function removeCart(i){cart.splice(i,1);save();renderCart()}
-function clearCart(){cart=[];save();renderCart();toast('Корзина очищена')}
-function applyPromo(){const v=document.getElementById('promo').value.trim();toast(v?'Промокод проверяем в демо-режиме':'Введите промокод')}
-function renderCities(filter=''){const cities=[['Павлодар','Доставка доступна'],['Костанай','Доставка доступна'],['Астана','Скоро в вашем городе'],['Алматы','Скоро в вашем городе']].filter(x=>x[0].toLowerCase().includes(filter.toLowerCase()));document.getElementById('cityList').innerHTML=cities.map(x=>`<button class="test-btn" style="display:flex;align-items:center;gap:12px;padding:15px;border-radius:16px;background:${x[0]===city?'#1c1c1c':'#151515'};border-color:${x[0]===city?'var(--red)':'#292929'}" onclick="selectCity('${x[0]}')">📍<span style="flex:1;text-align:left"><b>${x[0]}</b><small style="display:block;color:${x[1].startsWith('Д')?'var(--green)':'#999'};margin-top:3px">${x[1]}</small></span>${x[0]===city?'✓':''}</button>`).join('')}
-function filterCities(v){renderCities(v)}
-function selectCity(c){city=c;localStorage.setItem('knv_city',c);['homeCity','menuCity','profileCity'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=c});document.querySelectorAll('.test-city button').forEach(b=>b.classList.toggle('active',b.textContent.trim()===c));toast('Город: '+c);if(document.getElementById('cities').classList.contains('active'))setTimeout(()=>go('menu'),300)}
-function setDelivery(btn,type){document.querySelectorAll('.toggle button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');delivery=type;document.getElementById('addressField').classList.toggle('hide',type==='pickup')}
-function placeOrder(){if(!cart.length){toast('Добавь хотя бы одно блюдо 🍗');go('menu');return}const no=String(1000+Math.floor(Math.random()*8999));localStorage.setItem('knv_order',no);toast('Заказ №'+no+' создан в DEMO');setTimeout(()=>go('success'),350)}
-function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>e.classList.remove('show'),2200)}
-selectCity(city);updateBadges();renderMenu();
-if(tg?.initDataUnsafe?.user){const u=tg.initDataUnsafe.user;const n=u.first_name||'Иван';document.getElementById('profileName').textContent=n;document.getElementById('avatar').textContent=n.slice(0,1).toUpperCase()}
+
+
+let activeCategory = "Крылья";
+
+let cart = [];
+
+
+/* =========================
+   ПОКАЗ ТОВАРОВ
+========================= */
+
+function renderProducts() {
+
+    const container =
+        document.getElementById("products");
+
+    container.innerHTML = "";
+
+    const filtered =
+        products.filter(
+            product => product.category === activeCategory
+        );
+
+    filtered.forEach(product => {
+
+        const card = document.createElement("div");
+
+        card.className = "product";
+
+        card.innerHTML = `
+
+            <div class="product-image">
+                ${product.emoji}
+            </div>
+
+            <div class="product-body">
+
+                <div class="product-name">
+                    ${product.name}
+                </div>
+
+                <div class="product-description">
+                    ${product.description}
+                </div>
+
+                <div class="product-bottom">
+
+                    <div class="price">
+                        ${product.price.toLocaleString("ru-RU")} ₸
+                    </div>
+
+                    <button
+                        class="add"
+                        onclick="addToCart(${product.id})"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+        `;
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =========================
+   КАТЕГОРИИ
+========================= */
+
+function filterProducts(category, button) {
+
+    activeCategory = category;
+
+    document
+        .querySelectorAll(".category")
+        .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+    renderProducts();
+
+    if (tg) {
+        tg.HapticFeedback.impactOccurred("light");
+    }
+}
+
+
+/* =========================
+   КОРЗИНА
+========================= */
+
+function addToCart(id) {
+
+    const existing =
+        cart.find(item => item.id === id);
+
+    if (existing) {
+
+        existing.qty++;
+
+    } else {
+
+        cart.push({
+            id: id,
+            qty: 1
+        });
+
+    }
+
+    updateCart();
+
+    if (tg) {
+        tg.HapticFeedback.impactOccurred("medium");
+    }
+
+}
+
+
+function updateCart() {
+
+    const count =
+        cart.reduce(
+            (sum, item) => sum + item.qty,
+            0
+        );
+
+    const total =
+        cart.reduce((sum, item) => {
+
+            const product =
+                products.find(p => p.id === item.id);
+
+            return sum + product.price * item.qty;
+
+        }, 0);
+
+    document.getElementById("cartCount").innerText = count;
+
+    document.getElementById("cartTotal").innerText =
+        total.toLocaleString("ru-RU") + " ₸";
+
+    document.getElementById("modalTotal").innerText =
+        total.toLocaleString("ru-RU") + " ₸";
+
+
+    renderCart();
+}
+
+
+function renderCart() {
+
+    const container =
+        document.getElementById("cartItems");
+
+    container.innerHTML = "";
+
+    if (cart.length === 0) {
+
+        container.innerHTML = `
+            <p>
+                Здесь пока пусто.<br>
+                Преступление ещё не совершено 😎
+            </p>
+        `;
+
+        return;
+    }
+
+
+    cart.forEach(item => {
+
+        const product =
+            products.find(p => p.id === item.id);
+
+        const row =
+            document.createElement("div");
+
+        row.className = "cart-item";
+
+        row.innerHTML = `
+
+            <div class="cart-item-info">
+
+                <div class="cart-item-name">
+                    ${product.emoji} ${product.name}
+                </div>
+
+                <div class="cart-item-price">
+                    ${product.price.toLocaleString("ru-RU")} ₸
+                </div>
+
+            </div>
+
+            <div class="qty">
+
+                <button onclick="changeQty(${product.id}, -1)">
+                    −
+                </button>
+
+                <b>${item.qty}</b>
+
+                <button onclick="changeQty(${product.id}, 1)">
+                    +
+                </button>
+
+            </div>
+        `;
+
+        container.appendChild(row);
+
+    });
+
+}
+
+
+function changeQty(id, change) {
+
+    const item =
+        cart.find(item => item.id === id);
+
+    if (!item) return;
+
+    item.qty += change;
+
+    if (item.qty <= 0) {
+
+        cart =
+            cart.filter(item => item.id !== id);
+
+    }
+
+    updateCart();
+}
+
+
+/* =========================
+   МОДАЛЬНЫЕ ОКНА
+========================= */
+
+function openCart() {
+
+    document
+        .getElementById("cartModal")
+        .classList.add("active");
+
+    updateCart();
+}
+
+function closeCart() {
+
+    document
+        .getElementById("cartModal")
+        .classList.remove("active");
+}
+
+
+function openOrder() {
+
+    if (cart.length === 0) {
+
+        alert("Сначала добавь что-нибудь в корзину 🍗");
+
+        return;
+    }
+
+    closeCart();
+
+    document
+        .getElementById("orderModal")
+        .classList.add("active");
+}
+
+function closeOrder() {
+
+    document
+        .getElementById("orderModal")
+        .classList.remove("active");
+}
+
+
+/* =========================
+   ОФОРМЛЕНИЕ
+========================= */
+
+function sendOrder() {
+
+    const name =
+        document.getElementById("customerName").value;
+
+    const phone =
+        document.getElementById("customerPhone").value;
+
+    const address =
+        document.getElementById("customerAddress").value;
+
+
+    if (!name || !phone) {
+
+        alert("Укажи имя и телефон.");
+
+        return;
+    }
+
+
+    const order = {
+
+        city: currentCity,
+
+        name: name,
+
+        phone: phone,
+
+        address: address,
+
+        items: cart.map(item => {
+
+            const product =
+                products.find(p => p.id === item.id);
+
+            return {
+
+                name: product.name,
+
+                quantity: item.qty,
+
+                price: product.price
+
+            };
+
+        })
+
+    };
+
+
+    console.log("ORDER:", order);
+
+
+    if (tg) {
+
+        tg.sendData(
+            JSON.stringify(order)
+        );
+
+    }
+
+
+    alert(
+        "Заказ принят! 🍗\n\n" +
+        "Готовим твоё преступление."
+    );
+
+}
+
+
+/* =========================
+   НАВИГАЦИЯ
+========================= */
+
+function goHome() {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+function showInfo() {
+
+    alert(
+        "КУРИЦА НЕ ВИНОВАТА\n\n" +
+        "Виноват её вкус.\n\n" +
+        "Хрустящие крылья, соусы и комбо.\n" +
+        "Павлодар • Костанай • другие города скоро."
+    );
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+renderProducts();
+
+updateCart();
+
 </script>
+
 </body>
 </html>
