@@ -2,125 +2,188 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
 
 <title>Курица не виновата</title>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <style>
+
 * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
 
+html,
 body {
     margin: 0;
+    padding: 0;
     background: #050505;
-    color: #fff;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    color: #ffffff;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+}
+
+body {
+    min-height: 100vh;
 }
 
 button {
-    font: inherit;
-    border: 0;
+    font-family: inherit;
+    border: none;
     cursor: pointer;
 }
 
 .app {
+    width: 100%;
     max-width: 600px;
-    margin: auto;
+    margin: 0 auto;
     min-height: 100vh;
-    padding-bottom: 100px;
+    padding-bottom: 110px;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 18px 20px 10px;
-}
-
-.header-title {
-    font-size: 18px;
-    font-weight: 800;
-}
-
-.header-subtitle {
-    font-size: 12px;
-    color: #999;
-    margin-top: 2px;
+    padding: 18px 20px 8px;
 }
 
 .icon-btn {
     width: 48px;
     height: 48px;
+
     border-radius: 16px;
-    background: #181818;
+
+    background: #171717;
     border: 1px solid #303030;
-    color: white;
-    font-size: 24px;
+
+    color: #ffffff;
+
+    font-size: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* LOGO */
-
-.logo-wrap {
-    padding: 8px 20px 4px;
+.header-center {
     text-align: center;
 }
 
+.header-title {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.header-subtitle {
+    margin-top: 2px;
+    color: #8c8c8c;
+    font-size: 12px;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 12px 20px 2px;
+}
+
 .logo {
-    width: 110px;
-    height: 110px;
+    width: 120px;
+    height: 120px;
+
     object-fit: contain;
+
+    display: block;
+
     border-radius: 20px;
 }
 
-/* CITY */
+/* =========================
+   CITY
+========================= */
 
 .city {
-    margin: 10px 20px 22px;
+    margin: 8px 20px 20px;
+
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 13px 18px;
+
+    padding: 12px 18px;
+
     border-radius: 30px;
+
     background: #121212;
-    border: 1px solid #3a3a3a;
+    border: 1px solid #3b3b3b;
+
+    color: #ffffff;
+
     font-size: 17px;
-    font-weight: 800;
+    font-weight: 900;
 }
 
-.city span {
+.city-name {
     color: #ff654f;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero {
     margin: 0 20px;
-    padding: 28px 22px 25px;
+
+    padding: 28px 22px 24px;
+
     border-radius: 28px;
-    background: #111;
-    overflow: hidden;
-    position: relative;
+
+    background:
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(255,48,39,.13),
+            transparent 35%
+        ),
+        #111111;
+
+    border: 1px solid #222222;
 }
 
 .hero-small {
-    color: #ff6a52;
+    color: #ff654f;
+
     font-size: 15px;
-    font-weight: 900;
+    font-weight: 950;
+
     letter-spacing: 2px;
-    text-transform: uppercase;
 }
 
 .hero h1 {
+    margin: 17px 0;
+
     font-size: 45px;
-    line-height: .92;
-    margin: 18px 0;
+    line-height: .93;
+
     font-weight: 950;
+
     letter-spacing: -2px;
 }
 
@@ -128,42 +191,70 @@ button {
     color: #ff3027;
 }
 
-.hero p {
-    color: #ddd;
+.hero-text {
+    color: #d6d6d6;
+
     font-size: 17px;
-    line-height: 1.35;
-    margin-bottom: 22px;
+    line-height: 1.4;
+
+    margin: 0 0 23px;
+}
+
+.hero-text strong {
+    color: #ffffff;
 }
 
 .hero-btn {
     width: 100%;
-    padding: 18px;
+
+    padding: 17px 18px;
+
     border-radius: 18px;
+
     background: #ff3027;
-    color: white;
+
+    color: #ffffff;
+
     font-size: 20px;
-    font-weight: 900;
+    font-weight: 950;
+
+    box-shadow:
+        0 8px 25px rgba(255,48,39,.18);
 }
 
-/* SECTION */
+.hero-btn:active {
+    transform: scale(.98);
+}
+
+/* =========================
+   SECTION
+========================= */
 
 .section {
     padding: 28px 20px 0;
 }
 
 .section-title {
+    margin-bottom: 14px;
+
     font-size: 25px;
-    font-weight: 900;
-    margin-bottom: 15px;
+    font-weight: 950;
 }
 
-/* CATEGORIES */
+/* =========================
+   CATEGORIES
+========================= */
 
 .categories {
     display: flex;
-    gap: 10px;
+
+    gap: 9px;
+
     overflow-x: auto;
-    padding-bottom: 5px;
+
+    padding-bottom: 4px;
+
+    scrollbar-width: none;
 }
 
 .categories::-webkit-scrollbar {
@@ -172,42 +263,60 @@ button {
 
 .category {
     flex: 0 0 auto;
+
     padding: 12px 17px;
+
     border-radius: 20px;
+
     background: #171717;
     border: 1px solid #303030;
-    color: #ddd;
-    font-weight: 800;
+
+    color: #dddddd;
+
+    font-size: 14px;
+    font-weight: 850;
 }
 
 .category.active {
     background: #ff3027;
     border-color: #ff3027;
-    color: white;
+
+    color: #ffffff;
 }
 
-/* PRODUCTS */
+/* =========================
+   PRODUCTS
+========================= */
 
 .products {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 12px;
 }
 
 .product {
-    background: #151515;
-    border-radius: 22px;
     overflow: hidden;
+
+    background: #151515;
+
     border: 1px solid #292929;
+
+    border-radius: 22px;
 }
 
 .product-img {
+    width: 100%;
     height: 145px;
-    background: #202020;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 65px;
+
+    background: #202020;
+
+    font-size: 62px;
 }
 
 .product-info {
@@ -216,103 +325,153 @@ button {
 
 .product-name {
     font-size: 17px;
-    font-weight: 900;
+    font-weight: 950;
 }
 
 .product-desc {
-    color: #999;
-    font-size: 12px;
+    min-height: 32px;
+
     margin-top: 5px;
-    min-height: 30px;
+
+    color: #999999;
+
+    font-size: 12px;
+    line-height: 1.3;
 }
 
 .product-bottom {
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
+    justify-content: space-between;
+
     margin-top: 12px;
 }
 
 .price {
-    font-size: 18px;
-    font-weight: 900;
+    font-size: 17px;
+    font-weight: 950;
 }
 
 .add {
     width: 38px;
     height: 38px;
+
     border-radius: 13px;
+
     background: #ff3027;
-    color: white;
+
+    color: #ffffff;
+
     font-size: 25px;
-    font-weight: 800;
+    font-weight: 900;
 }
 
-/* INFO */
+.add:active {
+    transform: scale(.92);
+}
+
+/* =========================
+   INFO
+========================= */
 
 .info {
     margin: 25px 20px;
+
     padding: 20px;
+
     border-radius: 22px;
+
     background: #151515;
+    border: 1px solid #292929;
 }
 
-.info strong {
+.info-title {
     font-size: 18px;
+    font-weight: 950;
 }
 
-.info p {
-    color: #aaa;
-    line-height: 1.4;
+.info-text {
+    margin-top: 12px;
+
+    color: #aaaaaa;
+
+    line-height: 1.6;
 }
 
-/* BOTTOM NAV */
+/* =========================
+   BOTTOM NAV
+========================= */
 
 .bottom-nav {
     position: fixed;
-    bottom: 12px;
+
     left: 50%;
+    bottom: 12px;
+
     transform: translateX(-50%);
+
     width: calc(100% - 28px);
+
     max-width: 570px;
+
     padding: 8px;
-    border-radius: 25px;
-    background: rgba(20,20,20,.95);
-    border: 1px solid #333;
+
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    z-index: 100;
+
+    background: rgba(20,20,20,.96);
+
+    border: 1px solid #333333;
+
+    border-radius: 25px;
+
     backdrop-filter: blur(15px);
+
+    z-index: 100;
 }
 
 .nav-item {
-    background: transparent;
-    color: #777;
     padding: 9px 3px;
+
     border-radius: 18px;
+
+    background: transparent;
+
+    color: #777777;
+
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 850;
 }
 
-.nav-item .emoji {
+.nav-icon {
     display: block;
+
+    margin-bottom: 4px;
+
     font-size: 22px;
-    margin-bottom: 3px;
 }
 
 .nav-item.active {
     background: #252525;
-    color: white;
+
+    color: #ffffff;
 }
 
-/* MODAL */
+/* =========================
+   MODAL
+========================= */
 
 .modal {
     position: fixed;
+
     inset: 0;
-    background: rgba(0,0,0,.75);
+
     display: none;
     align-items: flex-end;
+
+    background: rgba(0,0,0,.72);
+
     z-index: 200;
 }
 
@@ -323,61 +482,146 @@ button {
 .modal-content {
     width: 100%;
     max-width: 600px;
-    margin: auto auto 0;
-    background: #151515;
+
+    margin: 0 auto;
+
+    padding: 24px 20px 35px;
+
     border-radius: 28px 28px 0 0;
-    padding: 25px 20px 35px;
+
+    background: #151515;
+
+    border-top: 1px solid #333333;
 }
 
 .modal-title {
+    margin-bottom: 18px;
+
     font-size: 25px;
-    font-weight: 900;
-    margin-bottom: 15px;
+    font-weight: 950;
 }
 
-.close {
-    width: 100%;
-    padding: 15px;
-    margin-top: 15px;
-    border-radius: 16px;
-    background: #292929;
-    color: white;
-    font-weight: 800;
+.modal-text {
+    color: #cccccc;
+
+    font-size: 16px;
+    line-height: 1.5;
 }
+
+.modal-button {
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding: 15px;
+
+    border-radius: 16px;
+
+    background: #292929;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 850;
+}
+
+.modal-button.red {
+    background: #ff3027;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 39px;
+    }
+
+    .product-img {
+        height: 125px;
+    }
+
+}
+
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
 
     <!-- HEADER -->
-    <header class="header">
-        <button class="icon-btn" onclick="openMenu()">☰</button>
 
-        <div style="text-align:center">
-            <div class="header-title">Курица не виновата</div>
-            <div class="header-subtitle">мини-приложение</div>
+    <header class="header">
+
+        <button
+            class="icon-btn"
+            onclick="openMenu()"
+        >
+            ☰
+        </button>
+
+        <div class="header-center">
+
+            <div class="header-title">
+                Курица не виновата
+            </div>
+
+            <div class="header-subtitle">
+                мини-приложение
+            </div>
+
         </div>
 
-        <button class="icon-btn" onclick="openCart()">🛒</button>
+        <button
+            class="icon-btn"
+            onclick="openCart()"
+        >
+            🛒
+        </button>
+
     </header>
 
-    <!-- ЛОГОТИП -->
+
+    <!-- LOGO -->
+
     <div class="logo-wrap">
+
         <img
             class="logo"
-            src="assets/7FE6A965-CC94-4604-8928-5CE9D6C08CE8.jpeg"
+            src="https://moskalukdenis002-blip.github.io/-kuricanevinovata/assets/7FE6A965-CC94-4604-8928-5CE9D6C08CE8.jpeg"
             alt="Курица не виновата"
         >
+
     </div>
 
-    <!-- ГОРОД -->
-    <button class="city" onclick="chooseCity()">
-        📍 <span>Павлодар</span>⌄
+
+    <!-- CITY -->
+
+    <button
+        class="city"
+        onclick="chooseCity()"
+    >
+
+        📍
+
+        <span
+            class="city-name"
+            id="cityName"
+        >
+            Павлодар
+        </span>
+
+        ⌄
+
     </button>
 
+
     <!-- HERO -->
+
     <section class="hero">
 
         <div class="hero-small">
@@ -385,44 +629,77 @@ button {
         </div>
 
         <h1>
+
             НАСТОЯЩИЕ<br>
+
             КРЫЛЬЯ.<br>
-            <span>БЕЗ<br>ОПРАВДАНИЙ.</span>
+
+            <span>
+                БЕЗ<br>
+                ОПРАВДАНИЙ.
+            </span>
+
         </h1>
 
-        <p>
+        <p class="hero-text">
+
             Сочные. Хрустящие. Незабываемые.<br>
-            <b>Курица действительно не виновата.</b>
+
+            <strong>
+                Курица действительно не виновата.
+            </strong>
+
         </p>
 
-        <button class="hero-btn" onclick="openMenu()">
+        <button
+            class="hero-btn"
+            onclick="scrollToMenu()"
+        >
             Открыть меню →
         </button>
 
     </section>
 
+
     <!-- MENU -->
-    <section class="section">
+
+    <section
+        class="section"
+        id="menuSection"
+    >
 
         <div class="section-title">
             Меню
         </div>
 
+
         <div class="categories">
 
-            <button class="category active" onclick="filterCategory(this,'wings')">
+            <button
+                class="category active"
+                onclick="filterCategory(this,'wings')"
+            >
                 🍗 Крылья
             </button>
 
-            <button class="category" onclick="filterCategory(this,'combo')">
+            <button
+                class="category"
+                onclick="filterCategory(this,'combo')"
+            >
                 🔥 Комбо
             </button>
 
-            <button class="category" onclick="filterCategory(this,'sauce')">
+            <button
+                class="category"
+                onclick="filterCategory(this,'sauce')"
+            >
                 🥫 Соусы
             </button>
 
-            <button class="category" onclick="filterCategory(this,'drinks')">
+            <button
+                class="category"
+                onclick="filterCategory(this,'drinks')"
+            >
                 🥤 Напитки
             </button>
 
@@ -430,13 +707,27 @@ button {
 
     </section>
 
+
     <!-- PRODUCTS -->
+
     <section class="section">
 
-        <div class="products">
+        <div
+            class="products"
+            id="products"
+        >
 
-            <div class="product">
-                <div class="product-img">🍗</div>
+
+            <!-- PRODUCT 1 -->
+
+            <div
+                class="product"
+                data-category="wings"
+            >
+
+                <div class="product-img">
+                    🍗
+                </div>
 
                 <div class="product-info">
 
@@ -449,19 +740,35 @@ button {
                     </div>
 
                     <div class="product-bottom">
-                        <div class="price">2 490 ₸</div>
 
-                        <button class="add" onclick="addToCart('Крылья ×6',2490)">
+                        <div class="price">
+                            2 490 ₸
+                        </div>
+
+                        <button
+                            class="add"
+                            onclick="addToCart('Крылья ×6',2490)"
+                        >
                             +
                         </button>
+
                     </div>
 
                 </div>
+
             </div>
 
 
-            <div class="product">
-                <div class="product-img">🍗</div>
+            <!-- PRODUCT 2 -->
+
+            <div
+                class="product"
+                data-category="wings"
+            >
+
+                <div class="product-img">
+                    🍗
+                </div>
 
                 <div class="product-info">
 
@@ -474,19 +781,35 @@ button {
                     </div>
 
                     <div class="product-bottom">
-                        <div class="price">3 790 ₸</div>
 
-                        <button class="add" onclick="addToCart('Крылья ×10',3790)">
+                        <div class="price">
+                            3 790 ₸
+                        </div>
+
+                        <button
+                            class="add"
+                            onclick="addToCart('Крылья ×10',3790)"
+                        >
                             +
                         </button>
+
                     </div>
 
                 </div>
+
             </div>
 
 
-            <div class="product">
-                <div class="product-img">🔥</div>
+            <!-- PRODUCT 3 -->
+
+            <div
+                class="product"
+                data-category="combo"
+            >
+
+                <div class="product-img">
+                    🔥
+                </div>
 
                 <div class="product-info">
 
@@ -499,19 +822,35 @@ button {
                     </div>
 
                     <div class="product-bottom">
-                        <div class="price">3 990 ₸</div>
 
-                        <button class="add" onclick="addToCart('Комбо №1',3990)">
+                        <div class="price">
+                            3 990 ₸
+                        </div>
+
+                        <button
+                            class="add"
+                            onclick="addToCart('Комбо №1',3990)"
+                        >
                             +
                         </button>
+
                     </div>
 
                 </div>
+
             </div>
 
 
-            <div class="product">
-                <div class="product-img">🥵</div>
+            <!-- PRODUCT 4 -->
+
+            <div
+                class="product"
+                data-category="wings"
+            >
+
+                <div class="product-img">
+                    🥵
+                </div>
 
                 <div class="product-info">
 
@@ -524,15 +863,24 @@ button {
                     </div>
 
                     <div class="product-bottom">
-                        <div class="price">2 690 ₸</div>
 
-                        <button class="add" onclick="addToCart('Огненные ×6',2690)">
+                        <div class="price">
+                            2 690 ₸
+                        </div>
+
+                        <button
+                            class="add"
+                            onclick="addToCart('Огненные ×6',2690)"
+                        >
                             +
                         </button>
+
                     </div>
 
                 </div>
+
             </div>
+
 
         </div>
 
@@ -540,16 +888,21 @@ button {
 
 
     <!-- INFO -->
+
     <div class="info">
 
-        <strong>Почему нас стоит попробовать?</strong>
+        <div class="info-title">
+            Почему нас стоит попробовать?
+        </div>
 
-        <p>
+        <div class="info-text">
+
             🍗 Хрустящая корочка<br>
             🔥 Яркий вкус<br>
             🥫 Авторские соусы<br>
             🚀 Быстрая доставка
-        </p>
+
+        </div>
 
     </div>
 
@@ -560,24 +913,59 @@ button {
 
 <nav class="bottom-nav">
 
-    <button class="nav-item active" onclick="setNav(this)">
-        <span class="emoji">⌂</span>
+    <button
+        class="nav-item active"
+        onclick="goHome(this)"
+    >
+
+        <span class="nav-icon">
+            ⌂
+        </span>
+
         Главная
+
     </button>
 
-    <button class="nav-item" onclick="openMenu()">
-        <span class="emoji">⌕</span>
+
+    <button
+        class="nav-item"
+        onclick="scrollToMenu();setNav(this)"
+    >
+
+        <span class="nav-icon">
+            ⌕
+        </span>
+
         Меню
+
     </button>
 
-    <button class="nav-item" onclick="openCart()">
-        <span class="emoji">🛒</span>
+
+    <button
+        class="nav-item"
+        onclick="openCart();setNav(this)"
+    >
+
+        <span class="nav-icon">
+            🛒
+        </span>
+
         Корзина
+
     </button>
 
-    <button class="nav-item" onclick="openProfile()">
-        <span class="emoji">♙</span>
+
+    <button
+        class="nav-item"
+        onclick="openProfile();setNav(this)"
+    >
+
+        <span class="nav-icon">
+            ♙
+        </span>
+
         Профиль
+
     </button>
 
 </nav>
@@ -585,19 +973,31 @@ button {
 
 <!-- MODAL -->
 
-<div class="modal" id="modal">
+<div
+    class="modal"
+    id="modal"
+    onclick="closeOutside(event)"
+>
 
     <div class="modal-content">
 
-        <div class="modal-title" id="modalTitle">
+        <div
+            class="modal-title"
+            id="modalTitle"
+        >
             Меню
         </div>
 
-        <div id="modalText">
-            Здесь будет следующий экран.
+        <div
+            class="modal-text"
+            id="modalText"
+        >
         </div>
 
-        <button class="close" onclick="closeModal()">
+        <button
+            class="modal-button"
+            onclick="closeModal()"
+        >
             Закрыть
         </button>
 
@@ -608,51 +1008,101 @@ button {
 
 <script>
 
-const tg = window.Telegram?.WebApp;
+/* =========================
+   TELEGRAM
+========================= */
+
+const tg = window.Telegram
+    ? window.Telegram.WebApp
+    : null;
 
 if (tg) {
+
     tg.ready();
+
     tg.expand();
+
+    try {
+        tg.setHeaderColor("#050505");
+        tg.setBackgroundColor("#050505");
+    } catch(e) {}
+
 }
 
 
-/* MODAL */
+/* =========================
+   MODAL
+========================= */
 
-function showModal(title, text) {
+function showModal(title, html) {
 
     document.getElementById("modalTitle").innerText = title;
-    document.getElementById("modalText").innerHTML = text;
 
-    document.getElementById("modal").classList.add("show");
+    document.getElementById("modalText").innerHTML = html;
+
+    document
+        .getElementById("modal")
+        .classList
+        .add("show");
+
 }
+
 
 function closeModal() {
 
-    document.getElementById("modal").classList.remove("show");
+    document
+        .getElementById("modal")
+        .classList
+        .remove("show");
 
 }
 
 
-/* MENU */
+function closeOutside(event) {
+
+    if (
+        event.target ===
+        document.getElementById("modal")
+    ) {
+        closeModal();
+    }
+
+}
+
+
+/* =========================
+   MENU
+========================= */
 
 function openMenu() {
 
-    showModal(
-        "🍗 Меню",
-        `
-        <p>🍗 Крылья</p>
-        <p>🔥 Комбо</p>
-        <p>🥫 Соусы</p>
-        <p>🥤 Напитки</p>
-        `
-    );
+    scrollToMenu();
 
 }
 
 
-/* CART */
+/* =========================
+   SCROLL TO MENU
+========================= */
+
+function scrollToMenu() {
+
+    const section =
+        document.getElementById("menuSection");
+
+    section.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   CART
+========================= */
 
 let cart = [];
+
 
 function addToCart(name, price) {
 
@@ -661,13 +1111,34 @@ function addToCart(name, price) {
         price: price
     });
 
-    if (tg) {
-        tg.HapticFeedback.impactOccurred("light");
+
+    if (tg && tg.HapticFeedback) {
+
+        try {
+            tg.HapticFeedback.impactOccurred("light");
+        } catch(e) {}
+
     }
 
+
     showModal(
+
         "🍗 Добавлено",
-        `<b>${name}</b><br><br>${price.toLocaleString()} ₸`
+
+        `
+        <b>${name}</b>
+        <br><br>
+        ${price.toLocaleString("ru-RU")} ₸
+        <br><br>
+
+        <button
+            class="modal-button red"
+            onclick="openCart()"
+        >
+            Перейти в корзину →
+        </button>
+        `
+
     );
 
 }
@@ -678,96 +1149,171 @@ function openCart() {
     if (cart.length === 0) {
 
         showModal(
+
             "🛒 Корзина",
-            "Пока здесь пусто.<br><br>Но это легко исправить 🍗"
+
+            `
+            Пока здесь пусто.
+            <br><br>
+            Но это легко исправить 🍗
+            `
+
         );
 
         return;
     }
 
+
     let total = 0;
 
     let html = "";
 
-    cart.forEach(item => {
+
+    cart.forEach((item, index) => {
 
         total += item.price;
 
         html += `
-            <div style="
-                padding:12px 0;
-                border-bottom:1px solid #333;
-            ">
-                <b>${item.name}</b>
+
+            <div
+                style="
+                    padding:12px 0;
+                    border-bottom:1px solid #333;
+                "
+            >
+
+                <b>
+                    ${item.name}
+                </b>
+
                 <br>
-                ${item.price.toLocaleString()} ₸
+
+                ${item.price.toLocaleString("ru-RU")} ₸
+
+                <button
+                    onclick="removeFromCart(${index})"
+                    style="
+                        float:right;
+                        background:#292929;
+                        color:#ff654f;
+                        border-radius:10px;
+                        padding:5px 9px;
+                    "
+                >
+                    ×
+                </button>
+
             </div>
+
         `;
 
     });
 
+
     html += `
+
         <br>
-        <b style="font-size:20px">
-            Итого: ${total.toLocaleString()} ₸
-        </b>
-        <br><br>
-        <button
-            onclick="checkout()"
+
+        <div
             style="
-                width:100%;
-                padding:16px;
-                border-radius:16px;
-                background:#ff3027;
-                color:white;
+                font-size:20px;
                 font-weight:900;
-                font-size:18px;
             "
+        >
+            Итого:
+            ${total.toLocaleString("ru-RU")} ₸
+        </div>
+
+        <button
+            class="modal-button red"
+            onclick="checkout()"
         >
             Оформить заказ →
         </button>
+
     `;
 
-    showModal("🛒 Корзина", html);
-
-}
-
-
-function checkout() {
 
     showModal(
-        "🔥 Заказ",
-        `
-        Заказ будет оформляться здесь.<br><br>
-        Следующим этапом подключим:
-        <br><br>
-        📍 адрес<br>
-        💳 оплату<br>
-        🚚 доставку<br>
-        📞 телефон
-        `
+        "🛒 Корзина",
+        html
     );
 
 }
 
 
-/* CITY */
+function removeFromCart(index) {
+
+    cart.splice(index, 1);
+
+    openCart();
+
+}
+
+
+/* =========================
+   CHECKOUT
+========================= */
+
+function checkout() {
+
+    showModal(
+
+        "🔥 Оформление заказа",
+
+        `
+        <b>Следующим этапом подключим:</b>
+
+        <br><br>
+
+        📍 Адрес доставки
+        <br>
+        📞 Телефон
+        <br>
+        🚚 Доставка
+        <br>
+        💳 Оплата
+        <br><br>
+
+        После этого заказ будет
+        автоматически уходить
+        тебе в Telegram.
+        `
+
+    );
+
+}
+
+
+/* =========================
+   CITY
+========================= */
 
 function chooseCity() {
 
     showModal(
+
         "📍 Выберите город",
+
         `
-        <button onclick="selectCity('Павлодар')"
-        style="width:100%;padding:15px;margin-bottom:10px;border-radius:15px;background:#292929;color:white">
-        📍 Павлодар
+
+        <button
+            class="modal-button"
+            onclick="selectCity('Павлодар')"
+        >
+            📍 Павлодар
         </button>
 
-        <button onclick="selectCity('Костанай')"
-        style="width:100%;padding:15px;border-radius:15px;background:#292929;color:white">
-        📍 Костанай
+
+        <button
+            class="modal-button"
+            onclick="selectCity('Костанай')"
+        >
+            📍 Костанай
         </button>
+
         `
+
     );
 
 }
@@ -775,52 +1321,104 @@ function chooseCity() {
 
 function selectCity(city) {
 
-    document.querySelector(".city span").innerText = city;
+    document
+        .getElementById("cityName")
+        .innerText = city;
 
     closeModal();
 
 }
 
 
-/* PROFILE */
+/* =========================
+   PROFILE
+========================= */
 
 function openProfile() {
 
     showModal(
+
         "♙ Профиль",
+
         `
-        Здесь будет профиль клиента.<br><br>
-        📦 История заказов<br>
-        🎁 Бонусы<br>
+        Здесь будет профиль клиента.
+
+        <br><br>
+
+        📦 История заказов
+        <br>
+        🎁 Бонусы
+        <br>
         ❤️ Избранное
         `
+
     );
 
 }
 
 
-/* CATEGORY */
+/* =========================
+   CATEGORY
+========================= */
 
 function filterCategory(button, category) {
 
     document
         .querySelectorAll(".category")
-        .forEach(el => el.classList.remove("active"));
+        .forEach(
+            el => el.classList.remove("active")
+        );
+
+
+    button.classList.add("active");
+
+
+    document
+        .querySelectorAll(".product")
+        .forEach(product => {
+
+            if (
+                product.dataset.category === category
+            ) {
+
+                product.style.display = "block";
+
+            } else {
+
+                product.style.display = "none";
+
+            }
+
+        });
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function setNav(button) {
+
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(
+            el => el.classList.remove("active")
+        );
 
     button.classList.add("active");
 
 }
 
 
-/* NAV */
+function goHome(button) {
 
-function setNav(button) {
+    setNav(button);
 
-    document
-        .querySelectorAll(".nav-item")
-        .forEach(el => el.classList.remove("active"));
-
-    button.classList.add("active");
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
 
