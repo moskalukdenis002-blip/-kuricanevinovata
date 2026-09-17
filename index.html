@@ -2,7 +2,10 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
+/>
 
 <title>Курица не виновата</title>
 
@@ -10,654 +13,655 @@
 
 <style>
 
-:root{
-    --bg:#080808;
-    --card:#111111;
-    --card2:#171717;
-    --orange:#ff4b35;
-    --orange2:#ff6b3d;
-    --white:#ffffff;
-    --gray:#9b9b9b;
-    --line:#292929;
+:root {
+    --orange: #ff4b32;
+    --orange-dark: #e93620;
+    --cream: #fff7ed;
+    --black: #111111;
+    --gray: #777777;
+    --light: #f5f5f5;
+    --white: #ffffff;
 }
 
-*{
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+    background: #0f0f0f;
 }
 
-body{
-    margin:0;
-    background:var(--bg);
-    color:white;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+body {
+    margin: 0;
+    background: #0f0f0f;
+    color: var(--white);
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Segoe UI",
+        sans-serif;
+
+    padding:
+        max(12px, env(safe-area-inset-top))
+        0
+        calc(90px + env(safe-area-inset-bottom));
+
+    overflow-x: hidden;
 }
 
-button{
-    font-family:inherit;
-    border:0;
+button {
+    font-family: inherit;
+    border: 0;
 }
 
-.app{
-    max-width:600px;
-    margin:auto;
-    padding-bottom:110px;
+.app {
+    width: 100%;
+    max-width: 620px;
+    margin: auto;
+    padding: 0 14px;
 }
 
-/* ================= HEADER ================= */
+/* =========================
+   TOP
+========================= */
 
-.header{
-    padding:18px 18px 8px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+.topbar {
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
 }
 
-.header-left{
-    display:flex;
-    align-items:center;
-    gap:12px;
+.brand-mini {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.header-logo{
-    width:52px;
-    height:52px;
-    border-radius:50%;
-    object-fit:cover;
-    background:white;
+.brand-mini img {
+    width: 42px;
+    height: 42px;
+    border-radius: 13px;
+    object-fit: cover;
+    background: white;
 }
 
-.brand-name{
-    font-size:18px;
-    font-weight:800;
-    line-height:1.05;
+.brand-name {
+    font-weight: 900;
+    font-size: 17px;
+    line-height: 18px;
 }
 
-.brand-sub{
-    color:#888;
-    font-size:12px;
-    margin-top:4px;
+.brand-sub {
+    color: #999;
+    font-size: 12px;
+    margin-top: 2px;
 }
 
-.icon-btn{
-    width:48px;
-    height:48px;
-    border-radius:16px;
-    background:#151515;
-    border:1px solid #2c2c2c;
-    color:white;
-    font-size:23px;
+.city-button {
+    background: #1b1b1b;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 18px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-weight: 700;
 }
 
-/* ================= CITY ================= */
+/* =========================
+   HERO
+========================= */
 
-.city-row{
-    padding:8px 18px 16px;
+.hero {
+    position: relative;
+    height: 430px;
+    border-radius: 28px;
+    overflow: hidden;
+    margin-bottom: 22px;
+    background: #222;
 }
 
-.city-btn{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    background:#141414;
-    border:1px solid #3a3a3a;
-    border-radius:30px;
-    color:white;
-    padding:11px 17px;
-    font-size:15px;
-    font-weight:700;
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
-.city-btn span{
-    color:var(--orange);
-}
+/* затемнение картинки */
 
-/* ================= HERO ================= */
-
-.hero{
-    margin:0 14px 22px;
-    min-height:430px;
-    border-radius:30px;
-    overflow:hidden;
-    position:relative;
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
     background:
-        radial-gradient(circle at 80% 20%,rgba(255,74,45,.4),transparent 30%),
-        linear-gradient(145deg,#171717,#080808 70%);
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.82) 0%,
+            rgba(0,0,0,.35) 48%,
+            rgba(0,0,0,.05) 100%
+        );
 }
 
-.hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(
-        to top,
-        rgba(0,0,0,.95) 0%,
-        rgba(0,0,0,.25) 65%,
-        transparent 100%
-    );
+.hero-content {
+    position: absolute;
+    z-index: 2;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
 }
 
-.hero-image{
-    position:absolute;
-    right:-30px;
-    top:5px;
-    width:80%;
-    height:280px;
-    object-fit:cover;
-    opacity:.95;
-    border-radius:25px;
-    mask-image:linear-gradient(to bottom,black 55%,transparent 100%);
-    -webkit-mask-image:linear-gradient(to bottom,black 55%,transparent 100%);
+.hero-label {
+    display: inline-block;
+    background: var(--orange);
+    padding: 7px 11px;
+    border-radius: 9px;
+    font-weight: 900;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
 }
 
-.hero-content{
-    position:absolute;
-    z-index:2;
-    bottom:28px;
-    left:24px;
-    right:24px;
+.hero-title {
+    font-size: clamp(34px, 9vw, 56px);
+    line-height: .92;
+    font-weight: 950;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    margin: 0 0 12px;
 }
 
-.hero-small{
-    color:var(--orange);
-    font-size:14px;
-    font-weight:900;
-    letter-spacing:2px;
-    text-transform:uppercase;
+.hero-title span {
+    color: var(--orange);
 }
 
-.hero-title{
-    margin:8px 0;
-    font-size:46px;
-    line-height:.92;
-    font-weight:950;
-    letter-spacing:-2px;
+.hero-description {
+    font-size: 15px;
+    color: #eee;
+    line-height: 1.35;
+    margin-bottom: 15px;
 }
 
-.hero-title span{
-    color:var(--orange);
+.hero-button {
+    width: 100%;
+    height: 58px;
+    border-radius: 17px;
+    background: var(--orange);
+    color: white;
+    font-size: 18px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(255,75,50,.3);
 }
 
-.hero-text{
-    color:#d0d0d0;
-    font-size:15px;
-    line-height:1.4;
-    margin:12px 0 20px;
+.hero-button:active {
+    transform: scale(.98);
 }
 
-.hero-btn{
-    width:100%;
-    padding:17px;
-    background:var(--orange);
-    color:white;
-    border-radius:17px;
-    font-size:17px;
-    font-weight:900;
-    box-shadow:0 10px 35px rgba(255,75,53,.25);
-}
-
-/* ================= SECTION ================= */
+/* =========================
+   SECTION
+========================= */
 
-.section{
-    padding:0 18px;
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 25px 2px 13px;
 }
 
-.section-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:end;
-    margin-bottom:14px;
+.section-title h2 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 950;
 }
 
-.section-title{
-    font-size:26px;
-    font-weight:950;
+.section-title span {
+    color: #999;
+    font-size: 13px;
 }
 
-.section-link{
-    color:var(--orange);
-    font-size:13px;
-    font-weight:700;
-}
+/* =========================
+   CATEGORIES
+========================= */
 
-/* ================= CATEGORIES ================= */
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
 
-.categories{
-    display:flex;
-    gap:9px;
-    overflow-x:auto;
-    padding-bottom:7px;
-    margin-bottom:24px;
-    scrollbar-width:none;
+.category {
+    background: #1a1a1a;
+    border: 1px solid #292929;
+    border-radius: 17px;
+    min-height: 82px;
+    padding: 10px 5px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
 }
 
-.categories::-webkit-scrollbar{
-    display:none;
+.category.active {
+    background: var(--orange);
+    border-color: var(--orange);
 }
 
-.category{
-    flex-shrink:0;
-    background:#151515;
-    color:#aaa;
-    border:1px solid #292929;
-    border-radius:14px;
-    padding:11px 15px;
-    font-size:14px;
-    font-weight:800;
+.category .emoji {
+    font-size: 27px;
+    display: block;
+    margin-bottom: 4px;
 }
 
-.category.active{
-    background:var(--orange);
-    border-color:var(--orange);
-    color:white;
+.category .name {
+    font-size: 11px;
+    font-weight: 800;
 }
 
-/* ================= PRODUCTS ================= */
+/* =========================
+   PRODUCTS
+========================= */
 
-.products{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:13px;
+.products {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
 }
 
-.product{
-    background:var(--card);
-    border:1px solid #222;
-    border-radius:21px;
-    overflow:hidden;
-    position:relative;
+.product {
+    background: #191919;
+    border: 1px solid #292929;
+    border-radius: 21px;
+    overflow: hidden;
+    position: relative;
 }
 
-.product-img-wrap{
-    height:165px;
-    background:#191919;
-    position:relative;
-    overflow:hidden;
+.product-image {
+    width: 100%;
+    height: 175px;
+    object-fit: cover;
+    display: block;
 }
 
-.product-img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:.25s;
+.product-body {
+    padding: 12px;
 }
 
-.product:active .product-img{
-    transform:scale(1.04);
+.product-name {
+    font-size: 17px;
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 5px;
 }
 
-.product-badge{
-    position:absolute;
-    top:10px;
-    left:10px;
-    background:var(--orange);
-    padding:6px 9px;
-    border-radius:9px;
-    font-size:10px;
-    font-weight:900;
+.product-description {
+    font-size: 12px;
+    color: #999;
+    line-height: 1.25;
+    min-height: 30px;
 }
 
-.product-info{
-    padding:13px;
+.product-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 11px;
 }
 
-.product-name{
-    font-size:17px;
-    font-weight:900;
-    margin-bottom:5px;
+.price {
+    font-size: 18px;
+    font-weight: 950;
 }
 
-.product-desc{
-    color:#888;
-    font-size:12px;
-    line-height:1.35;
-    min-height:32px;
+.add-button {
+    width: 38px;
+    height: 38px;
+    border-radius: 13px;
+    background: var(--orange);
+    color: white;
+    font-size: 25px;
+    font-weight: 700;
+    cursor: pointer;
 }
 
-.product-bottom{
-    margin-top:12px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+.add-button:active {
+    transform: scale(.9);
 }
 
-.price{
-    font-size:17px;
-    font-weight:950;
-}
+/* =========================
+   FEATURES
+========================= */
 
-.add-btn{
-    width:38px;
-    height:38px;
-    border-radius:13px;
-    background:var(--orange);
-    color:white;
-    font-size:24px;
-    font-weight:500;
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
 }
 
-/* ================= PROMO ================= */
-
-.promo{
-    margin:30px 18px;
-    background:
-        radial-gradient(circle at 90% 0%,rgba(255,75,53,.3),transparent 35%),
-        #151515;
-    border:1px solid #292929;
-    border-radius:23px;
-    padding:21px;
+.feature {
+    background: #191919;
+    border-radius: 17px;
+    padding: 15px 9px;
+    text-align: center;
+    border: 1px solid #292929;
 }
 
-.promo-label{
-    color:var(--orange);
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:1px;
+.feature .emoji {
+    font-size: 25px;
 }
 
-.promo-title{
-    font-size:24px;
-    font-weight:950;
-    margin:7px 0;
+.feature strong {
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
-.promo-text{
-    color:#999;
-    font-size:13px;
-    line-height:1.4;
+.feature span {
+    display: block;
+    font-size: 10px;
+    color: #888;
+    margin-top: 3px;
 }
 
-/* ================= MENU PAGE ================= */
+/* =========================
+   CART
+========================= */
 
-.page{
-    display:none;
+.cart-panel {
+    display: none;
 }
 
-.page.active{
-    display:block;
+.cart-panel.active {
+    display: block;
 }
 
-.menu-header{
-    padding:12px 18px 18px;
+.cart-empty {
+    background: #191919;
+    border-radius: 24px;
+    padding: 45px 20px;
+    text-align: center;
 }
 
-.menu-header h1{
-    font-size:36px;
-    line-height:1;
-    margin:0 0 8px;
-    font-weight:950;
+.cart-empty .emoji {
+    font-size: 50px;
+    margin-bottom: 10px;
 }
 
-.menu-header p{
-    color:#888;
-    margin:0;
+.cart-empty h3 {
+    margin: 0 0 7px;
+    font-size: 22px;
 }
 
-.menu-category-title{
-    font-size:24px;
-    font-weight:950;
-    margin:25px 0 14px;
+.cart-empty p {
+    color: #888;
+    margin: 0;
 }
-
-/* ================= CART ================= */
 
-.cart-empty{
-    margin:60px 20px;
-    text-align:center;
+.cart-item {
+    background: #191919;
+    border-radius: 18px;
+    padding: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 9px;
 }
 
-.cart-empty-icon{
-    font-size:65px;
-    margin-bottom:15px;
+.cart-item img {
+    width: 62px;
+    height: 62px;
+    object-fit: cover;
+    border-radius: 14px;
 }
 
-.cart-empty h2{
-    font-size:25px;
-    margin:0 0 8px;
+.cart-item-info {
+    flex: 1;
 }
 
-.cart-empty p{
-    color:#777;
+.cart-item-name {
+    font-weight: 850;
 }
 
-.cart-item{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    background:#151515;
-    border:1px solid #242424;
-    padding:10px;
-    border-radius:17px;
-    margin-bottom:10px;
+.cart-item-price {
+    color: #aaa;
+    font-size: 13px;
+    margin-top: 4px;
 }
 
-.cart-item img{
-    width:65px;
-    height:65px;
-    object-fit:cover;
-    border-radius:12px;
+.qty {
+    display: flex;
+    align-items: center;
+    gap: 7px;
 }
 
-.cart-item-info{
-    flex:1;
+.qty button {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background: #292929;
+    color: white;
+    font-size: 19px;
 }
 
-.cart-item-name{
-    font-weight:800;
-    font-size:14px;
+.cart-total {
+    margin-top: 15px;
+    padding: 18px;
+    border-radius: 20px;
+    background: var(--orange);
 }
 
-.cart-item-price{
-    color:#aaa;
-    margin-top:4px;
-    font-size:13px;
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 950;
 }
 
-.qty{
-    display:flex;
-    align-items:center;
-    gap:8px;
+.order-button {
+    width: 100%;
+    margin-top: 12px;
+    height: 54px;
+    background: white;
+    color: #111;
+    border-radius: 16px;
+    font-size: 17px;
+    font-weight: 950;
 }
 
-.qty button{
-    width:30px;
-    height:30px;
-    border-radius:9px;
-    background:#292929;
-    color:white;
-    font-size:18px;
-}
+/* =========================
+   PROFILE
+========================= */
 
-.qty span{
-    min-width:15px;
-    text-align:center;
+.profile-card {
+    background: #191919;
+    border-radius: 24px;
+    padding: 25px;
+    text-align: center;
 }
 
-.cart-footer{
-    position:fixed;
-    left:50%;
-    transform:translateX(-50%);
-    bottom:74px;
-    width:min(570px,calc(100% - 28px));
-    background:rgba(18,18,18,.96);
-    backdrop-filter:blur(18px);
-    border:1px solid #333;
-    border-radius:20px;
-    padding:12px;
-    z-index:50;
+.profile-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 22px;
+    object-fit: cover;
+    margin-bottom: 10px;
 }
 
-.cart-total-row{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:10px;
-    font-weight:900;
+.profile-card h2 {
+    margin: 0;
+    font-size: 24px;
 }
 
-.checkout{
-    width:100%;
-    background:var(--orange);
-    color:white;
-    border-radius:14px;
-    padding:15px;
-    font-size:16px;
-    font-weight:900;
+.profile-card p {
+    color: #888;
 }
 
-/* ================= PROFILE ================= */
+/* =========================
+   BOTTOM NAV
+========================= */
 
-.profile-card{
-    margin:20px 18px;
-    padding:25px;
-    border-radius:25px;
-    background:#151515;
-    border:1px solid #292929;
-    text-align:center;
-}
+.bottom-nav {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: max(10px, env(safe-area-inset-bottom));
+    max-width: 600px;
+    margin: auto;
 
-.profile-icon{
-    font-size:60px;
-}
+    height: 72px;
 
-.profile-card h2{
-    margin:10px 0 5px;
-}
+    background: rgba(24,24,24,.96);
+    border: 1px solid #343434;
+    border-radius: 25px;
 
-.profile-card p{
-    color:#888;
-}
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 
-/* ================= BOTTOM NAV ================= */
+    z-index: 50;
 
-.bottom-nav{
-    position:fixed;
-    z-index:100;
-    bottom:10px;
-    left:50%;
-    transform:translateX(-50%);
-    width:min(570px,calc(100% - 20px));
-    height:72px;
-    border-radius:24px;
-    background:rgba(20,20,20,.94);
-    backdrop-filter:blur(18px);
-    border:1px solid #303030;
-    display:flex;
-    justify-content:space-around;
-    align-items:center;
+    box-shadow: 0 15px 45px rgba(0,0,0,.5);
 }
 
-.nav-item{
-    width:25%;
-    text-align:center;
-    color:#777;
-    font-size:11px;
-    font-weight:700;
+.nav-item {
+    color: #777;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    font-size: 11px;
+    font-weight: 800;
 }
 
-.nav-icon{
-    font-size:23px;
-    display:block;
-    margin-bottom:3px;
+.nav-item .emoji {
+    font-size: 22px;
 }
 
-.nav-item.active{
-    color:white;
+.nav-item.active {
+    color: white;
 }
 
-.nav-item.active .nav-icon{
-    color:var(--orange);
+.nav-item.active .emoji {
+    transform: scale(1.08);
 }
 
-/* ================= CITY MODAL ================= */
+/* =========================
+   TOAST
+========================= */
 
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.7);
-    backdrop-filter:blur(7px);
-    display:none;
-    align-items:flex-end;
-    z-index:200;
-}
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 100px;
+    transform: translateX(-50%) translateY(20px);
+
+    background: white;
+    color: #111;
+
+    padding: 12px 17px;
+    border-radius: 15px;
 
-.modal.show{
-    display:flex;
+    font-weight: 800;
+    font-size: 14px;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: .25s;
+
+    z-index: 100;
+    white-space: nowrap;
 }
 
-.modal-box{
-    width:100%;
-    background:#151515;
-    border-radius:28px 28px 0 0;
-    padding:24px 20px 35px;
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
-.modal-title{
-    font-size:23px;
-    font-weight:950;
-    margin-bottom:18px;
+/* =========================
+   CITY MODAL
+========================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.72);
+    z-index: 90;
+    align-items: flex-end;
+    justify-content: center;
 }
 
-.city-option{
-    width:100%;
-    background:#202020;
-    color:white;
-    padding:17px;
-    border-radius:15px;
-    margin-bottom:9px;
-    text-align:left;
-    font-size:16px;
-    font-weight:800;
+.modal.active {
+    display: flex;
 }
 
-/* ================= TOAST ================= */
+.modal-card {
+    width: 100%;
+    max-width: 620px;
+    background: #1b1b1b;
+    border-radius: 28px 28px 0 0;
+    padding: 22px;
+    padding-bottom: calc(25px + env(safe-area-inset-bottom));
+}
 
-.toast{
-    position:fixed;
-    z-index:300;
-    top:20px;
-    left:50%;
-    transform:translateX(-50%) translateY(-20px);
-    background:#222;
-    border:1px solid #444;
-    padding:12px 18px;
-    border-radius:14px;
-    opacity:0;
-    pointer-events:none;
-    transition:.25s;
-    font-size:14px;
-    font-weight:700;
+.modal-card h2 {
+    margin-top: 0;
 }
 
-.toast.show{
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
+.city-option {
+    width: 100%;
+    background: #292929;
+    color: white;
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 8px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 800;
 }
 
-/* ================= DESKTOP ================= */
+/* =========================
+   MOBILE
+========================= */
 
-@media(min-width:700px){
+@media(max-width: 430px) {
 
-    body{
-        background:#050505;
+    .hero {
+        height: 410px;
+        border-radius: 24px;
     }
 
-    .app{
-        background:#080808;
-        min-height:100vh;
+    .hero-title {
+        font-size: 39px;
     }
 
-    .hero{
-        min-height:470px;
+    .categories {
+        gap: 6px;
     }
 
-    .hero-title{
-        font-size:55px;
+    .category {
+        min-height: 78px;
     }
 
+    .product-image {
+        height: 150px;
+    }
+
+    .products {
+        gap: 9px;
+    }
+
+    .product-name {
+        font-size: 15px;
+    }
+
+    .features {
+        gap: 6px;
+    }
 }
 
 </style>
@@ -667,317 +671,343 @@ button{
 
 <div class="app">
 
-<!-- ================= HOME ================= -->
+    <!-- TOP -->
 
-<div id="homePage" class="page active">
+    <div class="topbar">
 
-<header class="header">
+        <div class="brand-mini">
 
-    <div class="header-left">
+            <img
+                src="assets/7FE6A965-CC94-4604-8928-5CE9D6C08CE8.jpeg"
+                alt="Курица не виновата"
+            >
 
-        <img
-            class="header-logo"
-            src="assets/7FE6A965-CC94-4604-8928-5CE9D6C08CE8.jpeg"
-            alt="Курица не виновата"
-            onerror="this.style.display='none'"
-        >
+            <div>
+                <div class="brand-name">
+                    Курица не виновата
+                </div>
 
-        <div>
-            <div class="brand-name">Курица не виновата</div>
-            <div class="brand-sub">Виноват её вкус.</div>
+                <div class="brand-sub">
+                    Виноват её вкус.
+                </div>
+            </div>
+
         </div>
 
+        <button class="city-button" onclick="openCity()">
+            📍 Павлодар
+        </button>
+
     </div>
 
-    <button class="icon-btn" onclick="openCart()">🛒</button>
 
-</header>
+    <!-- HOME -->
 
-<div class="city-row">
+    <section id="homePage">
 
-    <button class="city-btn" onclick="openCity()">
-        📍 <span id="cityName">Павлодар</span>⌄
-    </button>
+        <div class="hero">
 
-</div>
+            <!-- ГЛАВНАЯ КАРТИНКА -->
 
+            <img
+                src="https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=1200&q=85"
+                alt="Крылья"
+            >
 
-<section class="hero">
+            <div class="hero-content">
 
-    <img
-        class="hero-image"
-        src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=900&q=90"
-        alt="Крылья"
-    >
+                <div class="hero-label">
+                    🍗 ГОРЯЧО. ХРУСТЯЩЕ. ВКУСНО.
+                </div>
 
-    <div class="hero-content">
+                <h1 class="hero-title">
+                    НАСТОЯЩИЕ<br>
+                    <span>КРЫЛЬЯ.</span>
+                </h1>
 
-        <div class="hero-small">
-            ВИНОВАТ ЕЁ ВКУС
+                <div class="hero-description">
+                    Сочные. Хрустящие. Без оправданий.
+                    Курица действительно не виновата.
+                </div>
+
+                <button
+                    class="hero-button"
+                    onclick="showPage('menu')"
+                >
+                    Открыть меню →
+                </button>
+
+            </div>
+
         </div>
 
-        <div class="hero-title">
-            НАСТОЯЩИЕ<br>
-            КРЫЛЬЯ.<br>
-            <span>БЕЗ<br>ОПРАВДАНИЙ.</span>
+
+        <div class="section-title">
+            <h2>Что будем совершать?</h2>
         </div>
 
-        <div class="hero-text">
-            Сочные. Хрустящие. Незабываемые.<br>
-            Курица действительно не виновата.
-        </div>
-
-        <button class="hero-btn" onclick="openMenu()">
-            Открыть меню →
-        </button>
-
-    </div>
-
-</section>
-
-
-<div class="section">
-
-    <div class="section-head">
-        <div class="section-title">Что будем совершать?</div>
-    </div>
-
-    <div class="categories">
-
-        <button class="category active" onclick="filterProducts('all',this)">
-            🍗 Всё
-        </button>
-
-        <button class="category" onclick="filterProducts('wings',this)">
-            🍗 Крылья
-        </button>
-
-        <button class="category" onclick="filterProducts('combo',this)">
-            🔥 Комбо
-        </button>
-
-        <button class="category" onclick="filterProducts('sauce',this)">
-            🥫 Соусы
-        </button>
-
-        <button class="category" onclick="filterProducts('drink',this)">
-            🥤 Напитки
-        </button>
-
-    </div>
-
-</div>
-
-
-<section class="section">
-
-    <div class="section-head">
-        <div class="section-title">Хиты</div>
-        <div class="section-link" onclick="openMenu()">Всё меню →</div>
-    </div>
-
-    <div class="products" id="homeProducts"></div>
-
-</section>
-
-
-<div class="promo">
-
-    <div class="promo-label">
-        ДЕЛО №001
-    </div>
-
-    <div class="promo-title">
-        Пора совершить преступление.
-    </div>
-
-    <div class="promo-text">
-        Выбирай крылья, добавляй соус и не пытайся оправдаться.
-        Мы всё равно знаем, кто виноват.
-    </div>
-
-</div>
-
-</div>
-
-
-<!-- ================= MENU ================= -->
-
-<div id="menuPage" class="page">
-
-    <div class="menu-header">
-
-        <h1>МЕНЮ</h1>
-
-        <p>
-            Выбирай преступление по вкусу.
-        </p>
-
-    </div>
-
-    <div class="section">
 
         <div class="categories">
 
-            <button class="category active" onclick="filterProducts('all',this)">
-                Всё
+            <button
+                class="category active"
+                onclick="filterProducts('wings')"
+            >
+                <span class="emoji">🍗</span>
+                <span class="name">Крылья</span>
             </button>
 
-            <button class="category" onclick="filterProducts('wings',this)">
-                🍗 Крылья
+            <button
+                class="category"
+                onclick="filterProducts('combo')"
+            >
+                <span class="emoji">🍔</span>
+                <span class="name">Комбо</span>
             </button>
 
-            <button class="category" onclick="filterProducts('combo',this)">
-                🔥 Комбо
+            <button
+                class="category"
+                onclick="filterProducts('sauce')"
+            >
+                <span class="emoji">🥫</span>
+                <span class="name">Соусы</span>
             </button>
 
-            <button class="category" onclick="filterProducts('sauce',this)">
-                🥫 Соусы
-            </button>
-
-            <button class="category" onclick="filterProducts('drink',this)">
-                🥤 Напитки
+            <button
+                class="category"
+                onclick="filterProducts('drinks')"
+            >
+                <span class="emoji">🥤</span>
+                <span class="name">Напитки</span>
             </button>
 
         </div>
 
-        <div class="products" id="menuProducts"></div>
 
-    </div>
+        <div class="section-title">
 
-</div>
+            <h2>Популярное</h2>
+
+            <span onclick="showPage('menu')">
+                Всё меню →
+            </span>
+
+        </div>
 
 
-<!-- ================= CART ================= -->
+        <div id="homeProducts" class="products"></div>
 
-<div id="cartPage" class="page">
 
-    <div class="menu-header">
+        <div class="section-title">
+            <h2>Почему мы?</h2>
+        </div>
 
-        <h1>КОРЗИНА</h1>
 
-        <p>Здесь начинается твоё преступление.</p>
+        <div class="features">
 
-    </div>
+            <div class="feature">
+                <div class="emoji">🔥</div>
+                <strong>Горячие</strong>
+                <span>Готовим после заказа</span>
+            </div>
 
-    <div class="section">
+            <div class="feature">
+                <div class="emoji">🍗</div>
+                <strong>Хрустящие</strong>
+                <span>Тот самый хруст</span>
+            </div>
 
-        <div id="cartItems"></div>
+            <div class="feature">
+                <div class="emoji">😎</div>
+                <strong>Без пафоса</strong>
+                <span>Просто вкусно</span>
+            </div>
 
-        <div id="emptyCart" class="cart-empty">
+        </div>
 
-            <div class="cart-empty-icon">🛒</div>
+    </section>
 
-            <h2>Корзина пуста</h2>
+
+    <!-- MENU -->
+
+    <section id="menuPage" style="display:none">
+
+        <div class="section-title">
+            <h2>Меню 🍗</h2>
+            <span id="menuCount">12 позиций</span>
+        </div>
+
+
+        <div class="categories">
+
+            <button
+                class="category active"
+                onclick="filterProducts('all')"
+            >
+                <span class="emoji">🔥</span>
+                <span class="name">Всё</span>
+            </button>
+
+            <button
+                class="category"
+                onclick="filterProducts('wings')"
+            >
+                <span class="emoji">🍗</span>
+                <span class="name">Крылья</span>
+            </button>
+
+            <button
+                class="category"
+                onclick="filterProducts('combo')"
+            >
+                <span class="emoji">🍔</span>
+                <span class="name">Комбо</span>
+            </button>
+
+            <button
+                class="category"
+                onclick="filterProducts('sauce')"
+            >
+                <span class="emoji">🥫</span>
+                <span class="name">Соусы</span>
+            </button>
+
+        </div>
+
+
+        <div style="height:14px"></div>
+
+        <div id="menuProducts" class="products"></div>
+
+    </section>
+
+
+    <!-- CART -->
+
+    <section id="cartPage" style="display:none">
+
+        <div class="section-title">
+            <h2>Корзина 🛒</h2>
+        </div>
+
+        <div id="cartContent"></div>
+
+    </section>
+
+
+    <!-- PROFILE -->
+
+    <section id="profilePage" style="display:none">
+
+        <div class="section-title">
+            <h2>Профиль 👤</h2>
+        </div>
+
+        <div class="profile-card">
+
+            <img
+                class="profile-avatar"
+                src="assets/7FE6A965-CC94-4604-8928-5CE9D6C08CE8.jpeg"
+            >
+
+            <h2>Курица не виновата</h2>
 
             <p>
-                Пока ничего подозрительного.
+                Здесь появятся ваши заказы,
+                бонусы и любимые блюда.
             </p>
 
-            <button class="hero-btn" onclick="openMenu()">
-                Открыть меню
+            <button
+                class="hero-button"
+                onclick="showPage('menu')"
+            >
+                Совершить преступление 🍗
             </button>
 
         </div>
 
-    </div>
+    </section>
 
 </div>
 
 
-<!-- ================= PROFILE ================= -->
-
-<div id="profilePage" class="page">
-
-    <div class="menu-header">
-
-        <h1>ПРОФИЛЬ</h1>
-
-        <p>Твои преступления будут здесь.</p>
-
-    </div>
-
-    <div class="profile-card">
-
-        <div class="profile-icon">🐔</div>
-
-        <h2>Курица не виновата</h2>
-
-        <p>
-            Виноват только её вкус.
-        </p>
-
-    </div>
-
-</div>
-
-
-</div>
-
-
-<!-- ================= CART FOOTER ================= -->
-
-<div id="cartFooter" class="cart-footer" style="display:none">
-
-    <div class="cart-total-row">
-        <span>Итого</span>
-        <span id="cartTotal">0 ₸</span>
-    </div>
-
-    <button class="checkout" onclick="checkout()">
-        Совершить преступление →
-    </button>
-
-</div>
-
-
-<!-- ================= BOTTOM NAV ================= -->
+<!-- BOTTOM NAV -->
 
 <nav class="bottom-nav">
 
-    <button class="nav-item active" id="navHome" onclick="showPage('home')">
-        <span class="nav-icon">⌂</span>
+    <button
+        class="nav-item active"
+        data-page="home"
+        onclick="showPage('home')"
+    >
+        <span class="emoji">🏠</span>
         Главная
     </button>
 
-    <button class="nav-item" id="navMenu" onclick="showPage('menu')">
-        <span class="nav-icon">⌕</span>
+    <button
+        class="nav-item"
+        data-page="menu"
+        onclick="showPage('menu')"
+    >
+        <span class="emoji">🍗</span>
         Меню
     </button>
 
-    <button class="nav-item" id="navCart" onclick="showPage('cart')">
-        <span class="nav-icon">🛒</span>
+    <button
+        class="nav-item"
+        data-page="cart"
+        onclick="showPage('cart')"
+    >
+        <span class="emoji">🛒</span>
         Корзина
     </button>
 
-    <button class="nav-item" id="navProfile" onclick="showPage('profile')">
-        <span class="nav-icon">♙</span>
+    <button
+        class="nav-item"
+        data-page="profile"
+        onclick="showPage('profile')"
+    >
+        <span class="emoji">👤</span>
         Профиль
     </button>
 
 </nav>
 
 
-<!-- ================= CITY MODAL ================= -->
+<!-- TOAST -->
 
-<div class="modal" id="cityModal" onclick="closeCity(event)">
+<div id="toast" class="toast">
+    Добавлено 🍗
+</div>
 
-    <div class="modal-box" onclick="event.stopPropagation()">
 
-        <div class="modal-title">
-            Выбери город
-        </div>
+<!-- CITY MODAL -->
 
-        <button class="city-option" onclick="selectCity('Павлодар')">
+<div
+    id="cityModal"
+    class="modal"
+    onclick="closeCity(event)"
+>
+
+    <div
+        class="modal-card"
+        onclick="event.stopPropagation()"
+    >
+
+        <h2>Выберите город 📍</h2>
+
+        <button
+            class="city-option"
+            onclick="selectCity('Павлодар')"
+        >
             📍 Павлодар
         </button>
 
-        <button class="city-option" onclick="selectCity('Костанай')">
+        <button
+            class="city-option"
+            onclick="selectCity('Костанай')"
+        >
             📍 Костанай
-        </button>
-
-        <button class="city-option" onclick="selectCity('Астана')">
-            📍 Астана
         </button>
 
     </div>
@@ -985,189 +1015,147 @@ button{
 </div>
 
 
-<div class="toast" id="toast"></div>
-
-
 <script>
 
-/* =========================================
+/* =========================
    TELEGRAM
-========================================= */
+========================= */
 
-const tg = window.Telegram && window.Telegram.WebApp
-    ? window.Telegram.WebApp
-    : null;
+const tg = window.Telegram?.WebApp;
 
-if(tg){
-
+if (tg) {
     tg.ready();
     tg.expand();
 
-    try{
-        tg.setHeaderColor("#080808");
-        tg.setBackgroundColor("#080808");
-    }catch(e){}
-
+    try {
+        tg.setHeaderColor("#0f0f0f");
+        tg.setBackgroundColor("#0f0f0f");
+    } catch(e) {}
 }
 
 
-/* =========================================
+/* =========================
    PRODUCTS
-========================================= */
+========================= */
 
 const products = [
 
     {
-        id:1,
-        category:"wings",
-        name:"Крылья Original",
-        desc:"Хрустящие снаружи. Сочные внутри.",
-        price:2990,
-        badge:"ХИТ",
-        image:"https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=800&q=90"
+        id: 1,
+        category: "wings",
+        name: "Классические крылья",
+        description: "Хрустящие. Сочные. Без оправданий.",
+        price: 2490,
+        image: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=900&q=85"
     },
 
     {
-        id:2,
-        category:"wings",
-        name:"Крылья Spicy",
-        desc:"Для тех, кто любит погорячее.",
-        price:3190,
-        badge:"ОГОНЬ",
-        image:"https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=800&q=90"
+        id: 2,
+        category: "wings",
+        name: "Острые крылья",
+        description: "Тут уже начинается преступление.",
+        price: 2690,
+        image: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=900&q=85"
     },
 
     {
-        id:3,
-        category:"combo",
-        name:"Комбо №1",
-        desc:"Крылья + картофель + напиток.",
-        price:4490,
-        badge:"КОМБО",
-        image:"https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=800&q=90"
+        id: 3,
+        category: "combo",
+        name: "Комбо №1",
+        description: "Крылья + картофель + напиток.",
+        price: 3490,
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85"
     },
 
     {
-        id:4,
-        category:"combo",
-        name:"Комбо XL",
-        desc:"Для серьёзного преступления.",
-        price:5990,
-        badge:"XL",
-        image:"https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=800&q=90"
+        id: 4,
+        category: "combo",
+        name: "Большое преступление",
+        description: "Для тех, кто пришёл серьёзно.",
+        price: 5490,
+        image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=85"
     },
 
     {
-        id:5,
-        category:"sauce",
-        name:"Сырный соус",
-        desc:"Густой. Сырный. Опасно вкусный.",
-        price:490,
-        badge:"",
-        image:"https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=800&q=90"
+        id: 5,
+        category: "sauce",
+        name: "Сырный соус",
+        description: "Потому что сыр — это аргумент.",
+        price: 390,
+        image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85"
     },
 
     {
-        id:6,
-        category:"sauce",
-        name:"Острый соус",
-        desc:"Мы предупреждали.",
-        price:490,
-        badge:"ОСТРО",
-        image:"https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=90"
+        id: 6,
+        category: "sauce",
+        name: "Острый соус",
+        description: "Ответственность на вас.",
+        price: 390,
+        image: "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=900&q=85"
     },
 
     {
-        id:7,
-        category:"drink",
-        name:"Cola",
-        desc:"Холодная и правильная.",
-        price:790,
-        badge:"",
-        image:"https://images.unsplash.com/photo-1629203849820-fdd70d49c38e?auto=format&fit=crop&w=800&q=90"
+        id: 7,
+        category: "drinks",
+        name: "Кола",
+        description: "Холодная. Как алиби.",
+        price: 590,
+        image: "https://images.unsplash.com/photo-1629203851122-3726ecdf080e?auto=format&fit=crop&w=900&q=85"
     },
 
     {
-        id:8,
-        category:"drink",
-        name:"Лимонад",
-        desc:"Освежает после преступления.",
-        price:990,
-        badge:"",
-        image:"https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=90"
+        id: 8,
+        category: "drinks",
+        name: "Лимонад",
+        description: "Освежиться после преступления.",
+        price: 690,
+        image: "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=900&q=85"
     }
 
 ];
 
 
-/* =========================================
+/* =========================
    CART
-========================================= */
+========================= */
 
 let cart = [];
 
 
-/* =========================================
-   FORMAT PRICE
-========================================= */
-
-function money(value){
-
-    return value.toLocaleString("ru-RU") + " ₸";
-
-}
-
-
-/* =========================================
+/* =========================
    PRODUCT CARD
-========================================= */
+========================= */
 
-function productCard(product){
+function productCard(product) {
 
     return `
 
         <div class="product">
 
-            <div class="product-img-wrap">
+            <img
+                class="product-image"
+                src="${product.image}"
+                alt="${product.name}"
+            >
 
-                <img
-                    class="product-img"
-                    src="${product.image}"
-                    alt="${product.name}"
-                    loading="lazy"
-                    onerror="this.style.display='none'"
-                >
-
-                ${
-                    product.badge
-                    ?
-                    `<div class="product-badge">
-                        ${product.badge}
-                    </div>`
-                    :
-                    ""
-                }
-
-            </div>
-
-            <div class="product-info">
+            <div class="product-body">
 
                 <div class="product-name">
                     ${product.name}
                 </div>
 
-                <div class="product-desc">
-                    ${product.desc}
+                <div class="product-description">
+                    ${product.description}
                 </div>
 
                 <div class="product-bottom">
 
                     <div class="price">
-                        ${money(product.price)}
+                        ${product.price.toLocaleString("ru-RU")} ₸
                     </div>
 
                     <button
-                        class="add-btn"
+                        class="add-button"
                         onclick="addToCart(${product.id})"
                     >
                         +
@@ -1180,313 +1168,399 @@ function productCard(product){
         </div>
 
     `;
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+function renderProducts(list, containerId) {
+
+    const container = document.getElementById(containerId);
+
+    container.innerHTML = list
+        .map(productCard)
+        .join("");
 
 }
 
 
-/* =========================================
-   RENDER PRODUCTS
-========================================= */
-
-function renderProducts(list = products){
-
-    const home = document.getElementById("homeProducts");
-    const menu = document.getElementById("menuProducts");
-
-    const html = list.map(productCard).join("");
-
-    if(home){
-        home.innerHTML = list.slice(0,4).map(productCard).join("");
-    }
-
-    if(menu){
-        menu.innerHTML = html;
-    }
-
-}
-
-
-/* =========================================
+/* =========================
    FILTER
-========================================= */
+========================= */
 
-function filterProducts(category,button){
-
-    if(button){
-
-        document
-            .querySelectorAll(".category")
-            .forEach(el => el.classList.remove("active"));
-
-        button.classList.add("active");
-
-    }
+function filterProducts(category) {
 
     let list = products;
 
-    if(category !== "all"){
+    if (category !== "all") {
 
         list = products.filter(
-            p => p.category === category
+            product => product.category === category
         );
 
     }
 
-    renderProducts(list);
+    renderProducts(list, "menuProducts");
+
+    const popular = products.slice(0, 4);
+
+    renderProducts(popular, "homeProducts");
 
     showPage("menu");
 
 }
 
 
-/* =========================================
-   ADD TO CART
-========================================= */
+/* =========================
+   CART ADD
+========================= */
 
-function addToCart(id){
+function addToCart(id) {
 
     const product = products.find(
-        p => p.id === id
+        product => product.id === id
     );
-
-    if(!product) return;
 
     const existing = cart.find(
         item => item.id === id
     );
 
-    if(existing){
+    if (existing) {
 
         existing.qty++;
 
-    }else{
+    } else {
 
         cart.push({
             ...product,
-            qty:1
+            qty: 1
         });
 
     }
 
-    renderCart();
+    updateCart();
 
     showToast(
-        product.name + " добавлено 🍗"
+        `${product.name} добавлено 🍗`
     );
 
 }
 
 
-/* =========================================
+/* =========================
    CHANGE QTY
-========================================= */
+========================= */
 
-function changeQty(id,delta){
+function changeQty(id, amount) {
 
     const item = cart.find(
-        p => p.id === id
+        product => product.id === id
     );
 
-    if(!item) return;
+    if (!item) return;
 
-    item.qty += delta;
+    item.qty += amount;
 
-    if(item.qty <= 0){
+    if (item.qty <= 0) {
 
         cart = cart.filter(
-            p => p.id !== id
+            product => product.id !== id
         );
 
     }
 
-    renderCart();
+    updateCart();
 
 }
 
 
-/* =========================================
-   CART
-========================================= */
+/* =========================
+   CART RENDER
+========================= */
 
-function renderCart(){
+function updateCart() {
 
     const container =
-        document.getElementById("cartItems");
+        document.getElementById("cartContent");
 
-    const empty =
-        document.getElementById("emptyCart");
+    if (!cart.length) {
 
-    const footer =
-        document.getElementById("cartFooter");
+        container.innerHTML = `
 
-    if(cart.length === 0){
+            <div class="cart-empty">
 
-        container.innerHTML = "";
+                <div class="emoji">
+                    🛒
+                </div>
 
-        empty.style.display = "block";
+                <h3>
+                    Здесь пока пусто
+                </h3>
 
-        footer.style.display = "none";
+                <p>
+                    Но это легко исправить.
+                </p>
+
+                <button
+                    class="hero-button"
+                    style="margin-top:20px"
+                    onclick="showPage('menu')"
+                >
+                    Совершить преступление →
+                </button>
+
+            </div>
+
+        `;
 
         return;
 
     }
 
-    empty.style.display = "none";
 
-    footer.style.display = "block";
+    let total = 0;
 
-    container.innerHTML = cart.map(item => `
+    container.innerHTML = cart.map(item => {
 
-        <div class="cart-item">
+        total += item.price * item.qty;
 
-            <img src="${item.image}">
+        return `
 
-            <div class="cart-item-info">
+            <div class="cart-item">
 
-                <div class="cart-item-name">
-                    ${item.name}
+                <img src="${item.image}">
+
+                <div class="cart-item-info">
+
+                    <div class="cart-item-name">
+                        ${item.name}
+                    </div>
+
+                    <div class="cart-item-price">
+                        ${item.price.toLocaleString("ru-RU")} ₸
+                    </div>
+
                 </div>
 
-                <div class="cart-item-price">
-                    ${money(item.price)}
+                <div class="qty">
+
+                    <button
+                        onclick="changeQty(${item.id}, -1)"
+                    >
+                        −
+                    </button>
+
+                    <strong>
+                        ${item.qty}
+                    </strong>
+
+                    <button
+                        onclick="changeQty(${item.id}, 1)"
+                    >
+                        +
+                    </button>
+
                 </div>
 
             </div>
 
-            <div class="qty">
+        `;
 
-                <button onclick="changeQty(${item.id},-1)">
-                    −
-                </button>
+    }).join("");
+
+
+    container.innerHTML += `
+
+        <div class="cart-total">
+
+            <div class="cart-total-row">
 
                 <span>
-                    ${item.qty}
+                    Итого
                 </span>
 
-                <button onclick="changeQty(${item.id},1)">
-                    +
-                </button>
+                <span>
+                    ${total.toLocaleString("ru-RU")} ₸
+                </span>
 
             </div>
+
+            <button
+                class="order-button"
+                onclick="makeOrder()"
+            >
+                Оформить заказ →
+            </button>
 
         </div>
 
-    `).join("");
-
-
-    const total = cart.reduce(
-        (sum,item) =>
-            sum + item.price * item.qty,
-        0
-    );
-
-    document.getElementById("cartTotal").textContent =
-        money(total);
+    `;
 
 }
 
 
-/* =========================================
-   OPEN CART
-========================================= */
+/* =========================
+   ORDER
+========================= */
 
-function openCart(){
+function makeOrder() {
 
-    showPage("cart");
+    if (!cart.length) return;
 
-}
+    const order = {
 
+        items: cart.map(item => ({
+            id: item.id,
+            name: item.name,
+            qty: item.qty,
+            price: item.price
+        })),
 
-/* =========================================
-   OPEN MENU
-========================================= */
+        city: currentCity,
 
-function openMenu(){
+        total: cart.reduce(
+            (sum, item) =>
+                sum + item.price * item.qty,
+            0
+        )
 
-    showPage("menu");
-
-}
-
-
-/* =========================================
-   PAGES
-========================================= */
-
-function showPage(page){
-
-    document
-        .querySelectorAll(".page")
-        .forEach(el => el.classList.remove("active"));
+    };
 
 
-    document
-        .getElementById(page + "Page")
-        .classList.add("active");
+    if (tg) {
 
-
-    document
-        .querySelectorAll(".nav-item")
-        .forEach(el => el.classList.remove("active"));
-
-
-    const nav =
-        document.getElementById(
-            "nav" +
-            page.charAt(0).toUpperCase() +
-            page.slice(1)
+        tg.sendData(
+            JSON.stringify(order)
         );
 
-    if(nav){
-        nav.classList.add("active");
     }
 
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-
-    if(page === "cart"){
-        renderCart();
-    }
+    showToast(
+        "Заказ отправлен 🍗"
+    );
 
 }
 
 
-/* =========================================
-   CITY
-========================================= */
+/* =========================
+   PAGE NAVIGATION
+========================= */
 
-function openCity(){
+function showPage(page) {
+
+    document.getElementById("homePage").style.display =
+        page === "home" ? "block" : "none";
+
+    document.getElementById("menuPage").style.display =
+        page === "menu" ? "block" : "none";
+
+    document.getElementById("cartPage").style.display =
+        page === "cart" ? "block" : "none";
+
+    document.getElementById("profilePage").style.display =
+        page === "profile" ? "block" : "none";
+
+
+    document.querySelectorAll(".nav-item")
+        .forEach(item => {
+
+            item.classList.toggle(
+                "active",
+                item.dataset.page === page
+            );
+
+        });
+
+
+    if (page === "menu") {
+
+        renderProducts(
+            products,
+            "menuProducts"
+        );
+
+    }
+
+    if (page === "cart") {
+
+        updateCart();
+
+    }
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function showToast(text) {
+
+    const toast =
+        document.getElementById("toast");
+
+    toast.innerText = text;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 1800);
+
+}
+
+
+/* =========================
+   CITY
+========================= */
+
+let currentCity = "Павлодар";
+
+
+function openCity() {
 
     document
         .getElementById("cityModal")
-        .classList.add("show");
+        .classList.add("active");
 
 }
 
-function closeCity(event){
 
-    if(event.target.id === "cityModal"){
+function closeCity(event) {
+
+    if (
+        event.target.id === "cityModal"
+    ) {
 
         document
             .getElementById("cityModal")
-            .classList.remove("show");
+            .classList.remove("active");
 
     }
 
 }
 
-function selectCity(city){
 
-    document
-        .getElementById("cityName")
-        .textContent = city;
+function selectCity(city) {
+
+    currentCity = city;
+
+    document.querySelector(
+        ".city-button"
+    ).innerText = "📍 " + city;
 
     document
         .getElementById("cityModal")
-        .classList.remove("show");
+        .classList.remove("active");
 
     showToast(
         "Город: " + city
@@ -1495,117 +1569,21 @@ function selectCity(city){
 }
 
 
-/* =========================================
-   CHECKOUT
-========================================= */
-
-function checkout(){
-
-    if(cart.length === 0){
-
-        showToast(
-            "Сначала добавь что-нибудь 🍗"
-        );
-
-        return;
-
-    }
-
-
-    const total = cart.reduce(
-        (sum,item) =>
-            sum + item.price * item.qty,
-        0
-    );
-
-
-    let text =
-        "Новый заказ\n\n";
-
-
-    cart.forEach(item => {
-
-        text +=
-            item.name +
-            " × " +
-            item.qty +
-            "\n";
-
-    });
-
-
-    text +=
-        "\nИтого: " +
-        money(total);
-
-
-    /*
-       Пока это тестовая кнопка.
-       Когда подключим backend/CRM,
-       сюда отправим настоящий заказ.
-    */
-
-    if(tg){
-
-        try{
-
-            tg.sendData(
-                JSON.stringify({
-                    type:"order",
-                    city:
-                        document.getElementById(
-                            "cityName"
-                        ).textContent,
-                    items:cart,
-                    total:total
-                })
-            );
-
-        }catch(e){}
-
-    }
-
-
-    showToast(
-        "Заказ подготовлен 🍗"
-    );
-
-}
-
-
-/* =========================================
-   TOAST
-========================================= */
-
-let toastTimer;
-
-function showToast(text){
-
-    const toast =
-        document.getElementById("toast");
-
-    toast.textContent = text;
-
-    toast.classList.add("show");
-
-    clearTimeout(toastTimer);
-
-    toastTimer = setTimeout(() => {
-
-        toast.classList.remove("show");
-
-    },2200);
-
-}
-
-
-/* =========================================
+/* =========================
    START
-========================================= */
+========================= */
 
-renderProducts();
+renderProducts(
+    products.slice(0, 4),
+    "homeProducts"
+);
 
-renderCart();
+renderProducts(
+    products,
+    "menuProducts"
+);
+
+updateCart();
 
 </script>
 
